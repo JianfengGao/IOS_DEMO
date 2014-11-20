@@ -1,0 +1,652 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		47248E031A10447100F0B782 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 47248DF81A10447100F0B782 /* GCDAsyncSocket.m */; };
+		47248E041A10447100F0B782 /* IHGCDReconnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 47248DFA1A10447100F0B782 /* IHGCDReconnect.m */; };
+		47248E051A10447100F0B782 /* IHGCDSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 47248DFC1A10447100F0B782 /* IHGCDSocket.m */; };
+		47248E061A10447100F0B782 /* IHMsgSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 47248DFE1A10447100F0B782 /* IHMsgSocket.m */; };
+		47248E071A10447100F0B782 /* MessageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 47248E001A10447100F0B782 /* MessageObject.m */; };
+		47248E081A10447100F0B782 /* NSData+Zip.m in Sources */ = {isa = PBXBuildFile; fileRef = 47248E021A10447100F0B782 /* NSData+Zip.m */; };
+		47248E0E1A10573200F0B782 /* common.m in Sources */ = {isa = PBXBuildFile; fileRef = 47248E0B1A10573200F0B782 /* common.m */; };
+		473FC96E1A08A762007693EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC96D1A08A762007693EE /* main.m */; };
+		473FC9711A08A762007693EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9701A08A762007693EE /* AppDelegate.m */; };
+		473FC9771A08A762007693EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 473FC9751A08A762007693EE /* Main.storyboard */; };
+		473FC9791A08A762007693EE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 473FC9781A08A762007693EE /* Images.xcassets */; };
+		473FC97C1A08A762007693EE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 473FC97A1A08A762007693EE /* LaunchScreen.xib */; };
+		473FC9881A08A762007693EE /* NoteBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9871A08A762007693EE /* NoteBookTests.m */; };
+		473FC99C1A08A8AB007693EE /* DisplayNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC99B1A08A8AB007693EE /* DisplayNoteViewController.m */; };
+		473FC9A21A08A933007693EE /* NotebookDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC99F1A08A933007693EE /* NotebookDatabase.m */; };
+		473FC9A31A08A933007693EE /* NoteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9A11A08A933007693EE /* NoteInfo.m */; };
+		473FC9A51A08AB03007693EE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473FC9A41A08AB03007693EE /* AVFoundation.framework */; };
+		473FC9A71A08AB11007693EE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473FC9A61A08AB11007693EE /* QuartzCore.framework */; };
+		473FC9A91A08AB18007693EE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473FC9A81A08AB18007693EE /* UIKit.framework */; };
+		473FC9AB1A08AB22007693EE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 473FC9AA1A08AB22007693EE /* libsqlite3.dylib */; };
+		473FC9AD1A08AB4B007693EE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473FC9AC1A08AB4B007693EE /* SystemConfiguration.framework */; };
+		473FC9AF1A08AB57007693EE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473FC9AE1A08AB57007693EE /* CoreGraphics.framework */; };
+		473FC9B11A08AB6A007693EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473FC9B01A08AB6A007693EE /* Foundation.framework */; };
+		473FC9B51A08ADA5007693EE /* CreatNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9B41A08ADA5007693EE /* CreatNoteViewController.m */; };
+		473FC9B81A08AEF0007693EE /* CreateNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9B71A08AEF0007693EE /* CreateNoteView.m */; };
+		473FC9BF1A08C690007693EE /* EditingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9BC1A08C690007693EE /* EditingTableViewCell.m */; };
+		473FC9C01A08C690007693EE /* PatientDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9BE1A08C690007693EE /* PatientDetailTableViewCell.m */; };
+		475CB6941A11A2BE00AB2EF5 /* NoteInfoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 475CB6931A11A2BE00AB2EF5 /* NoteInfoDetail.m */; };
+		4791D8A71A1C31E7002E8D0E /* SyncServerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4791D8A61A1C31E7002E8D0E /* SyncServerNotes.m */; };
+		47B5941C1A09E88D00C02548 /* SearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B5941B1A09E88D00C02548 /* SearchBar.m */; };
+		47B5941F1A09E8B900C02548 /* DisplayNotesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B5941E1A09E8B900C02548 /* DisplayNotesView.m */; };
+		47B594211A0A331000C02548 /* PatientData.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B594201A0A331000C02548 /* PatientData.m */; };
+		47FDB7741A1B0F6F0028CF94 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FDB7731A1B0F6F0028CF94 /* libz.1.1.3.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		473FC9821A08A762007693EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 473FC9601A08A762007693EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 473FC9671A08A762007693EE;
+			remoteInfo = NoteBook;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		47248DF71A10447100F0B782 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		47248DF81A10447100F0B782 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		47248DF91A10447100F0B782 /* IHGCDReconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHGCDReconnect.h; sourceTree = "<group>"; };
+		47248DFA1A10447100F0B782 /* IHGCDReconnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHGCDReconnect.m; sourceTree = "<group>"; };
+		47248DFB1A10447100F0B782 /* IHGCDSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHGCDSocket.h; sourceTree = "<group>"; };
+		47248DFC1A10447100F0B782 /* IHGCDSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHGCDSocket.m; sourceTree = "<group>"; };
+		47248DFD1A10447100F0B782 /* IHMsgSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHMsgSocket.h; sourceTree = "<group>"; };
+		47248DFE1A10447100F0B782 /* IHMsgSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IHMsgSocket.m; sourceTree = "<group>"; };
+		47248DFF1A10447100F0B782 /* MessageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageObject.h; sourceTree = "<group>"; };
+		47248E001A10447100F0B782 /* MessageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageObject.m; sourceTree = "<group>"; };
+		47248E011A10447100F0B782 /* NSData+Zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Zip.h"; sourceTree = "<group>"; };
+		47248E021A10447100F0B782 /* NSData+Zip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Zip.m"; sourceTree = "<group>"; };
+		47248E0A1A10573200F0B782 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		47248E0B1A10573200F0B782 /* common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = common.m; sourceTree = "<group>"; };
+		47248E0C1A10573200F0B782 /* ihefecommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ihefecommon.h; sourceTree = "<group>"; };
+		47248E0D1A10573200F0B782 /* ihefeimport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ihefeimport.h; sourceTree = "<group>"; };
+		47248E761A1063BA00F0B782 /* NoteBook-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NoteBook-Prefix.pch"; sourceTree = "<group>"; };
+		473FC9681A08A762007693EE /* NoteBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		473FC96C1A08A762007693EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		473FC96D1A08A762007693EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		473FC96F1A08A762007693EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		473FC9701A08A762007693EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		473FC9761A08A762007693EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		473FC9781A08A762007693EE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		473FC97B1A08A762007693EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		473FC9811A08A762007693EE /* NoteBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		473FC9861A08A762007693EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		473FC9871A08A762007693EE /* NoteBookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteBookTests.m; sourceTree = "<group>"; };
+		473FC99A1A08A8AB007693EE /* DisplayNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayNoteViewController.h; path = ViewController/DisplayNoteViewController.h; sourceTree = "<group>"; };
+		473FC99B1A08A8AB007693EE /* DisplayNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayNoteViewController.m; path = ViewController/DisplayNoteViewController.m; sourceTree = "<group>"; };
+		473FC99E1A08A933007693EE /* NotebookDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookDatabase.h; sourceTree = "<group>"; };
+		473FC99F1A08A933007693EE /* NotebookDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookDatabase.m; sourceTree = "<group>"; };
+		473FC9A01A08A933007693EE /* NoteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteInfo.h; sourceTree = "<group>"; };
+		473FC9A11A08A933007693EE /* NoteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteInfo.m; sourceTree = "<group>"; };
+		473FC9A41A08AB03007693EE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		473FC9A61A08AB11007693EE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		473FC9A81A08AB18007693EE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		473FC9AA1A08AB22007693EE /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		473FC9AC1A08AB4B007693EE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		473FC9AE1A08AB57007693EE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		473FC9B01A08AB6A007693EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		473FC9B31A08ADA5007693EE /* CreatNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatNoteViewController.h; sourceTree = "<group>"; };
+		473FC9B41A08ADA5007693EE /* CreatNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatNoteViewController.m; sourceTree = "<group>"; };
+		473FC9B61A08AEF0007693EE /* CreateNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateNoteView.h; path = View/CreateNoteView.h; sourceTree = "<group>"; };
+		473FC9B71A08AEF0007693EE /* CreateNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateNoteView.m; path = View/CreateNoteView.m; sourceTree = "<group>"; };
+		473FC9BB1A08C690007693EE /* EditingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditingTableViewCell.h; sourceTree = "<group>"; };
+		473FC9BC1A08C690007693EE /* EditingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditingTableViewCell.m; sourceTree = "<group>"; };
+		473FC9BD1A08C690007693EE /* PatientDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailTableViewCell.h; sourceTree = "<group>"; };
+		473FC9BE1A08C690007693EE /* PatientDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailTableViewCell.m; sourceTree = "<group>"; };
+		475CB6921A11A2BE00AB2EF5 /* NoteInfoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteInfoDetail.h; sourceTree = "<group>"; };
+		475CB6931A11A2BE00AB2EF5 /* NoteInfoDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteInfoDetail.m; sourceTree = "<group>"; };
+		4791D8A51A1C31E7002E8D0E /* SyncServerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncServerNotes.h; sourceTree = "<group>"; };
+		4791D8A61A1C31E7002E8D0E /* SyncServerNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncServerNotes.m; sourceTree = "<group>"; };
+		47B5941A1A09E88D00C02548 /* SearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBar.h; sourceTree = "<group>"; };
+		47B5941B1A09E88D00C02548 /* SearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBar.m; sourceTree = "<group>"; };
+		47B5941D1A09E8B900C02548 /* DisplayNotesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayNotesView.h; sourceTree = "<group>"; };
+		47B5941E1A09E8B900C02548 /* DisplayNotesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayNotesView.m; sourceTree = "<group>"; };
+		47B594201A0A331000C02548 /* PatientData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientData.m; sourceTree = "<group>"; };
+		47B594221A0A332400C02548 /* PatientData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientData.h; sourceTree = "<group>"; };
+		47FDB7731A1B0F6F0028CF94 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		473FC9651A08A762007693EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47FDB7741A1B0F6F0028CF94 /* libz.1.1.3.dylib in Frameworks */,
+				473FC9B11A08AB6A007693EE /* Foundation.framework in Frameworks */,
+				473FC9AF1A08AB57007693EE /* CoreGraphics.framework in Frameworks */,
+				473FC9AD1A08AB4B007693EE /* SystemConfiguration.framework in Frameworks */,
+				473FC9AB1A08AB22007693EE /* libsqlite3.dylib in Frameworks */,
+				473FC9A91A08AB18007693EE /* UIKit.framework in Frameworks */,
+				473FC9A71A08AB11007693EE /* QuartzCore.framework in Frameworks */,
+				473FC9A51A08AB03007693EE /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		473FC97E1A08A762007693EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		47248DF61A10447100F0B782 /* MsgModule */ = {
+			isa = PBXGroup;
+			children = (
+				47248DF71A10447100F0B782 /* GCDAsyncSocket.h */,
+				47248DF81A10447100F0B782 /* GCDAsyncSocket.m */,
+				47248DF91A10447100F0B782 /* IHGCDReconnect.h */,
+				47248DFA1A10447100F0B782 /* IHGCDReconnect.m */,
+				47248DFB1A10447100F0B782 /* IHGCDSocket.h */,
+				47248DFC1A10447100F0B782 /* IHGCDSocket.m */,
+				47248DFD1A10447100F0B782 /* IHMsgSocket.h */,
+				47248DFE1A10447100F0B782 /* IHMsgSocket.m */,
+				47248DFF1A10447100F0B782 /* MessageObject.h */,
+				47248E001A10447100F0B782 /* MessageObject.m */,
+				47248E011A10447100F0B782 /* NSData+Zip.h */,
+				47248E021A10447100F0B782 /* NSData+Zip.m */,
+			);
+			path = MsgModule;
+			sourceTree = "<group>";
+		};
+		47248E091A10573200F0B782 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				47248E0A1A10573200F0B782 /* common.h */,
+				47248E0B1A10573200F0B782 /* common.m */,
+				47248E0C1A10573200F0B782 /* ihefecommon.h */,
+				47248E0D1A10573200F0B782 /* ihefeimport.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		473FC95F1A08A762007693EE = {
+			isa = PBXGroup;
+			children = (
+				47FDB7731A1B0F6F0028CF94 /* libz.1.1.3.dylib */,
+				473FC96A1A08A762007693EE /* NoteBook */,
+				473FC9B21A08ABCD007693EE /* Framework */,
+				473FC9841A08A762007693EE /* NoteBookTests */,
+				473FC9691A08A762007693EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		473FC9691A08A762007693EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				473FC9681A08A762007693EE /* NoteBook.app */,
+				473FC9811A08A762007693EE /* NoteBookTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		473FC96A1A08A762007693EE /* NoteBook */ = {
+			isa = PBXGroup;
+			children = (
+				47248DF61A10447100F0B782 /* MsgModule */,
+				473FC9BA1A08C67A007693EE /* Cell */,
+				473FC96F1A08A762007693EE /* AppDelegate.h */,
+				473FC9701A08A762007693EE /* AppDelegate.m */,
+				473FC9B91A08AEF7007693EE /* View */,
+				473FC99D1A08A8C9007693EE /* Model */,
+				473FC9991A08A873007693EE /* ViewController */,
+				473FC96B1A08A762007693EE /* Supporting Files */,
+			);
+			path = NoteBook;
+			sourceTree = "<group>";
+		};
+		473FC96B1A08A762007693EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				47248E091A10573200F0B782 /* common */,
+				473FC9781A08A762007693EE /* Images.xcassets */,
+				473FC9751A08A762007693EE /* Main.storyboard */,
+				473FC97A1A08A762007693EE /* LaunchScreen.xib */,
+				47248E761A1063BA00F0B782 /* NoteBook-Prefix.pch */,
+				473FC96C1A08A762007693EE /* Info.plist */,
+				473FC96D1A08A762007693EE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		473FC9841A08A762007693EE /* NoteBookTests */ = {
+			isa = PBXGroup;
+			children = (
+				473FC9871A08A762007693EE /* NoteBookTests.m */,
+				473FC9851A08A762007693EE /* Supporting Files */,
+			);
+			path = NoteBookTests;
+			sourceTree = "<group>";
+		};
+		473FC9851A08A762007693EE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				473FC9861A08A762007693EE /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		473FC9991A08A873007693EE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				473FC99A1A08A8AB007693EE /* DisplayNoteViewController.h */,
+				473FC99B1A08A8AB007693EE /* DisplayNoteViewController.m */,
+				473FC9B31A08ADA5007693EE /* CreatNoteViewController.h */,
+				473FC9B41A08ADA5007693EE /* CreatNoteViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		473FC99D1A08A8C9007693EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4791D8A51A1C31E7002E8D0E /* SyncServerNotes.h */,
+				4791D8A61A1C31E7002E8D0E /* SyncServerNotes.m */,
+				47B594221A0A332400C02548 /* PatientData.h */,
+				47B594201A0A331000C02548 /* PatientData.m */,
+				473FC99E1A08A933007693EE /* NotebookDatabase.h */,
+				473FC99F1A08A933007693EE /* NotebookDatabase.m */,
+				475CB6921A11A2BE00AB2EF5 /* NoteInfoDetail.h */,
+				475CB6931A11A2BE00AB2EF5 /* NoteInfoDetail.m */,
+				473FC9A01A08A933007693EE /* NoteInfo.h */,
+				473FC9A11A08A933007693EE /* NoteInfo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		473FC9B21A08ABCD007693EE /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				473FC9AA1A08AB22007693EE /* libsqlite3.dylib */,
+				473FC9A61A08AB11007693EE /* QuartzCore.framework */,
+				473FC9A41A08AB03007693EE /* AVFoundation.framework */,
+				473FC9A81A08AB18007693EE /* UIKit.framework */,
+				473FC9AC1A08AB4B007693EE /* SystemConfiguration.framework */,
+				473FC9AE1A08AB57007693EE /* CoreGraphics.framework */,
+				473FC9B01A08AB6A007693EE /* Foundation.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		473FC9B91A08AEF7007693EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47B5941A1A09E88D00C02548 /* SearchBar.h */,
+				47B5941B1A09E88D00C02548 /* SearchBar.m */,
+				47B5941D1A09E8B900C02548 /* DisplayNotesView.h */,
+				47B5941E1A09E8B900C02548 /* DisplayNotesView.m */,
+				473FC9B61A08AEF0007693EE /* CreateNoteView.h */,
+				473FC9B71A08AEF0007693EE /* CreateNoteView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		473FC9BA1A08C67A007693EE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				473FC9BB1A08C690007693EE /* EditingTableViewCell.h */,
+				473FC9BC1A08C690007693EE /* EditingTableViewCell.m */,
+				473FC9BD1A08C690007693EE /* PatientDetailTableViewCell.h */,
+				473FC9BE1A08C690007693EE /* PatientDetailTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		473FC9671A08A762007693EE /* NoteBook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 473FC98B1A08A762007693EE /* Build configuration list for PBXNativeTarget "NoteBook" */;
+			buildPhases = (
+				473FC9641A08A762007693EE /* Sources */,
+				473FC9651A08A762007693EE /* Frameworks */,
+				473FC9661A08A762007693EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoteBook;
+			productName = NoteBook;
+			productReference = 473FC9681A08A762007693EE /* NoteBook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		473FC9801A08A762007693EE /* NoteBookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 473FC98E1A08A762007693EE /* Build configuration list for PBXNativeTarget "NoteBookTests" */;
+			buildPhases = (
+				473FC97D1A08A762007693EE /* Sources */,
+				473FC97E1A08A762007693EE /* Frameworks */,
+				473FC97F1A08A762007693EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				473FC9831A08A762007693EE /* PBXTargetDependency */,
+			);
+			name = NoteBookTests;
+			productName = NoteBookTests;
+			productReference = 473FC9811A08A762007693EE /* NoteBookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		473FC9601A08A762007693EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = ihefe;
+				TargetAttributes = {
+					473FC9671A08A762007693EE = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 2AHKDU2ECU;
+					};
+					473FC9801A08A762007693EE = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 473FC9671A08A762007693EE;
+					};
+				};
+			};
+			buildConfigurationList = 473FC9631A08A762007693EE /* Build configuration list for PBXProject "NoteBook" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 473FC95F1A08A762007693EE;
+			productRefGroup = 473FC9691A08A762007693EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				473FC9671A08A762007693EE /* NoteBook */,
+				473FC9801A08A762007693EE /* NoteBookTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		473FC9661A08A762007693EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				473FC9771A08A762007693EE /* Main.storyboard in Resources */,
+				473FC97C1A08A762007693EE /* LaunchScreen.xib in Resources */,
+				473FC9791A08A762007693EE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		473FC97F1A08A762007693EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		473FC9641A08A762007693EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				475CB6941A11A2BE00AB2EF5 /* NoteInfoDetail.m in Sources */,
+				473FC9C01A08C690007693EE /* PatientDetailTableViewCell.m in Sources */,
+				47248E071A10447100F0B782 /* MessageObject.m in Sources */,
+				4791D8A71A1C31E7002E8D0E /* SyncServerNotes.m in Sources */,
+				47248E031A10447100F0B782 /* GCDAsyncSocket.m in Sources */,
+				473FC9BF1A08C690007693EE /* EditingTableViewCell.m in Sources */,
+				47248E0E1A10573200F0B782 /* common.m in Sources */,
+				47248E051A10447100F0B782 /* IHGCDSocket.m in Sources */,
+				473FC9B81A08AEF0007693EE /* CreateNoteView.m in Sources */,
+				47248E081A10447100F0B782 /* NSData+Zip.m in Sources */,
+				473FC9A31A08A933007693EE /* NoteInfo.m in Sources */,
+				473FC9711A08A762007693EE /* AppDelegate.m in Sources */,
+				473FC99C1A08A8AB007693EE /* DisplayNoteViewController.m in Sources */,
+				47248E041A10447100F0B782 /* IHGCDReconnect.m in Sources */,
+				47248E061A10447100F0B782 /* IHMsgSocket.m in Sources */,
+				473FC96E1A08A762007693EE /* main.m in Sources */,
+				473FC9B51A08ADA5007693EE /* CreatNoteViewController.m in Sources */,
+				473FC9A21A08A933007693EE /* NotebookDatabase.m in Sources */,
+				47B5941C1A09E88D00C02548 /* SearchBar.m in Sources */,
+				47B5941F1A09E8B900C02548 /* DisplayNotesView.m in Sources */,
+				47B594211A0A331000C02548 /* PatientData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		473FC97D1A08A762007693EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				473FC9881A08A762007693EE /* NoteBookTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		473FC9831A08A762007693EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 473FC9671A08A762007693EE /* NoteBook */;
+			targetProxy = 473FC9821A08A762007693EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		473FC9751A08A762007693EE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				473FC9761A08A762007693EE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		473FC97A1A08A762007693EE /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				473FC97B1A08A762007693EE /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		473FC9891A08A762007693EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		473FC98A1A08A762007693EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		473FC98C1A08A762007693EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoteBook/NoteBook-Prefix.pch";
+				INFOPLIST_FILE = NoteBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = NoteBook;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		473FC98D1A08A762007693EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoteBook/NoteBook-Prefix.pch";
+				INFOPLIST_FILE = NoteBook/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = NoteBook;
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		473FC98F1A08A762007693EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NoteBookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = NoteBookTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoteBook.app/NoteBook";
+			};
+			name = Debug;
+		};
+		473FC9901A08A762007693EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = NoteBookTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = NoteBookTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NoteBook.app/NoteBook";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		473FC9631A08A762007693EE /* Build configuration list for PBXProject "NoteBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				473FC9891A08A762007693EE /* Debug */,
+				473FC98A1A08A762007693EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		473FC98B1A08A762007693EE /* Build configuration list for PBXNativeTarget "NoteBook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				473FC98C1A08A762007693EE /* Debug */,
+				473FC98D1A08A762007693EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		473FC98E1A08A762007693EE /* Build configuration list for PBXNativeTarget "NoteBookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				473FC98F1A08A762007693EE /* Debug */,
+				473FC9901A08A762007693EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 473FC9601A08A762007693EE /* Project object */;
+}

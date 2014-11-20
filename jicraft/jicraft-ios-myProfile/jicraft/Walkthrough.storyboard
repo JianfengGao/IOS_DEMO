@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IF5-Cp-leA">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Walkthrough View Controller-->
+        <scene sceneID="CkK-De-JHb">
+            <objects>
+                <viewController storyboardIdentifier="walk" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IF5-Cp-leA" customClass="BWWalkthroughViewController" customModule="jicraft" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gxR-L4-k8O"/>
+                        <viewControllerLayoutGuide type="bottom" id="UO6-dc-zBo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ds6-ui-g3o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gH-no-GyF" userLabel="Next">
+                                <rect key="frame" x="309" y="609" width="50" height="50"/>
+                                <state key="normal" image="rightarrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextPage" destination="IF5-Cp-leA" eventType="touchUpInside" id="wLr-nP-GoT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzn-WU-jJ4">
+                                <rect key="frame" x="311" y="28" width="30" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="[ X ]">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="IF5-Cp-leA" eventType="touchUpInside" id="n2f-0D-8Rc"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jeo-Sg-2Jn">
+                                <rect key="frame" x="162" y="366" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdh-rh-4yw" userLabel="Prev">
+                                <rect key="frame" x="16" y="609" width="50" height="50"/>
+                                <state key="normal" image="leftarrow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="prevPage" destination="IF5-Cp-leA" eventType="touchUpInside" id="Mbv-7t-4aI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.02493136487" green="0.38575753829999998" blue="0.71137152780000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="UO6-dc-zBo" firstAttribute="top" secondItem="Rdh-rh-4yw" secondAttribute="bottom" constant="8" id="CuM-XP-AnI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hzn-WU-jJ4" secondAttribute="trailing" constant="18" id="IbO-QG-E5C"/>
+                            <constraint firstItem="Rdh-rh-4yw" firstAttribute="leading" secondItem="Ds6-ui-g3o" secondAttribute="leadingMargin" id="VUW-bm-DuB"/>
+                            <constraint firstItem="UO6-dc-zBo" firstAttribute="top" secondItem="2gH-no-GyF" secondAttribute="bottom" constant="8" id="xuZ-nP-QvO"/>
+                            <constraint firstItem="2gH-no-GyF" firstAttribute="trailing" secondItem="Ds6-ui-g3o" secondAttribute="trailingMargin" id="zWr-5s-cP1"/>
+                            <constraint firstItem="hzn-WU-jJ4" firstAttribute="top" secondItem="gxR-L4-k8O" secondAttribute="bottom" constant="8" id="zdJ-nZ-Wcc"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="closeButton" destination="hzn-WU-jJ4" id="YBv-37-KtI"/>
+                        <outlet property="nextButton" destination="2gH-no-GyF" id="dfm-Ta-CzA"/>
+                        <outlet property="pageControl" destination="jeo-Sg-2Jn" id="AM5-Pr-sYO"/>
+                        <outlet property="prevButton" destination="Rdh-rh-4yw" id="ZHe-XI-ebL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1l-0M-5FU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-297.5" y="116.5"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="7xP-az-nQN">
+            <objects>
+                <viewController storyboardIdentifier="walk0" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mtw-d1-aEX" customClass="BWWalkthroughPageViewController" customModule="jicraft" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IkX-SQ-aSe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Azm-BB-YSx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rEH-3n-DVU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifA-iz-VPs">
+                                <rect key="frame" x="53" y="415" width="268" height="69"/>
+                                <string key="text">不断的在客户群眼前出现
+让我们帮助你打造明日品牌新星！</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iPhoneScreen" translatesAutoresizingMaskIntoConstraints="NO" id="qMw-ZA-HXZ">
+                                <rect key="frame" x="106" y="498" width="163" height="169"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="g7X-04-T3T">
+                                <rect key="frame" x="39" y="47" width="59" height="53"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="tTh-B6-oqm">
+                                <rect key="frame" x="86" y="94" width="59" height="53"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="IUm-n4-82F">
+                                <rect key="frame" x="176" y="81" width="59" height="53"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="xdJ-2r-azU">
+                                <rect key="frame" x="200" y="142" width="59" height="53"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="YJ9-no-Uxo">
+                                <rect key="frame" x="283" y="142" width="59" height="53"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="C9b-h1-x08">
+                                <rect key="frame" x="283" y="47" width="59" height="53"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="0Mj-Is-xGW">
+                                <rect key="frame" x="30" y="127" width="59" height="53"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="高大象" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMC-Os-cED">
+                                <rect key="frame" x="47" y="293" width="281" height="94"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.5490196078431373" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="1.2" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9QN-k5-l9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151.5" y="116.5"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="3Pu-CQ-ZSB">
+            <objects>
+                <viewController storyboardIdentifier="walk1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jxl-4I-81G" customClass="BWWalkthroughPageViewController" customModule="jicraft" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7uE-w4-IQY"/>
+                        <viewControllerLayoutGuide type="bottom" id="YPz-Rf-rWT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eX3-xw-VB6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="高大象" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-mh-mOK">
+                                <rect key="frame" x="47" y="293" width="281" height="94"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Y1-0t-KoT">
+                                <rect key="frame" x="53" y="415" width="268" height="69"/>
+                                <string key="text">找寻活动找寻品牌的目标
+做好活动准备任务</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iPhoneScreen" translatesAutoresizingMaskIntoConstraints="NO" id="wG8-e1-49S">
+                                <rect key="frame" x="106" y="498" width="163" height="169"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_ele" translatesAutoresizingMaskIntoConstraints="NO" id="Txt-Ax-Ocg">
+                                <rect key="frame" x="131" y="95" width="113" height="102"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.44996994410000002" blue="0.59837911109999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speedVariance">
+                            <point key="value" x="1.2" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="speed">
+                            <point key="value" x="1" y="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Olg-yf-ocx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="696.5" y="116.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="iPhoneScreen" width="163" height="196"/>
+        <image name="leftarrow" width="50" height="50"/>
+        <image name="rightarrow" width="50" height="50"/>
+        <image name="white_ele" width="59" height="53"/>
+    </resources>
+</document>

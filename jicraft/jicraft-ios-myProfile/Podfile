@@ -1,0 +1,7 @@
+platform :ios, '7.0'
+link_with 'jicraft', 'jicraftTests'
+pod "AFNetworking", "~> 2.0"
+pod "SDWebImage","~> 3.6"
+pod "MCSwipeTableViewCell", "~> 2.1.0"
+pod "SSKeychain", "~> 1.2.2"
+pod "FXLabel", "~> 1.5.8"

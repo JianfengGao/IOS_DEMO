@@ -1,0 +1,215 @@
+//
+//  http_jicraft.swift
+//  jicraft
+//
+//  Created by JERRY LIU on 23/7/14.
+//  Copyright (c) 2014 com.jicraft. All rights reserved.
+//
+
+import Foundation
+
+class HttpJicraft:NSObject {
+    
+    let manager = AFHTTPRequestOperationManager()
+    var api_url:String!
+    
+     init() {
+        super.init()
+<<<<<<< HEAD
+        
+        // QA server
+        api_url = "http://218.244.147.5"
+        
+        // JSON settings
+=======
+        api_url = "http://jicraft.com"
+>>>>>>> Events & DetailVC
+        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        manager.responseSerializer = AFJSONResponseSerializer()
+    }
+    
+    // MARK - POST /users/sign_in/
+    func postLogin(username:String, password:String,
+                successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void,
+                errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> Void
+        ) -> Void {
+        
+        let params = ["user":["email":username, "password":password]] as Dictionary
+        let request_url = "\(self.api_url)/users/sign_in/"
+        
+        println("postLogin to \(request_url), with params \(params)")
+        
+        manager.POST(
+            request_url,
+            parameters: params,
+            success: { (operation: AFHTTPRequestOperation!,
+                responseObject: AnyObject!) in
+                println("JSON: " + responseObject.description)
+                
+                successBlock(operation: operation, responseObject: responseObject)
+            },
+            failure: { (operation: AFHTTPRequestOperation!,
+                error: NSError!) in
+                println("Error: " + error.localizedDescription)
+                
+                errorBlock(operation: operation, error: error)
+            })
+    }
+    
+<<<<<<< HEAD
+    // MARK - GET /events/
+    func indexEvents(successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void,
+        errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> Void ) -> Void {
+            
+            let request_url = "\(self.api_url)/events/"
+            
+            manager.GET(
+                request_url,
+                parameters: nil,
+=======
+    func getEvents(successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> (),
+        errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> ()
+        ) -> () {
+            let request_url = "\(self.api_url)/events/"
+             println("getEvents to \(request_url), with NO params ")
+            
+             manager.GET(request_url, parameters: nil,
+>>>>>>> Events & DetailVC
+                success: { (operation: AFHTTPRequestOperation!,
+                    responseObject: AnyObject!) in
+                    println("JSON: " + responseObject.description)
+                    
+                    successBlock(operation: operation, responseObject: responseObject)
+                },
+                failure: { (operation: AFHTTPRequestOperation!,
+                    error: NSError!) in
+                    println("Error: " + error.localizedDescription)
+                    
+                    errorBlock(operation: operation, error: error)
+<<<<<<< HEAD
+                })
+    }
+    
+    // MARK - GET /events/:id/
+    func showEvent(eventId:String, successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void,
+        errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> Void ) -> Void {
+            
+            let request_url = "\(self.api_url)/events/\(eventId)"
+            
+            manager.GET(
+                request_url,
+                parameters: nil,
+                success: { (operation: AFHTTPRequestOperation!,
+                    responseObject: AnyObject!) in
+                    println("JSON: " + responseObject.description)
+                    
+                    successBlock(operation: operation, responseObject: responseObject)
+                },
+                failure: { (operation: AFHTTPRequestOperation!,
+                    error: NSError!) in
+                    println("Error: " + error.localizedDescription)
+                    
+                    errorBlock(operation: operation, error: error)
+                })
+    }
+    
+    // MARK - GET /profiles/
+    func indexProfiles(successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void,
+        errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> Void ) -> Void {
+            
+            let request_url = "\(self.api_url)/profiles/"
+            
+            manager.GET(
+                request_url,
+                parameters: nil,
+                success: { (operation: AFHTTPRequestOperation!,
+                    responseObject: AnyObject!) in
+                    println("JSON: " + responseObject.description)
+                    
+                    successBlock(operation: operation, responseObject: responseObject)
+                },
+                failure: { (operation: AFHTTPRequestOperation!,
+                    error: NSError!) in
+                    println("Error: " + error.localizedDescription)
+                    
+                    errorBlock(operation: operation, error: error)
+                })
+    }
+    
+    // MARK - GET /profiles/:id/
+    func showProfile(profileId:String, successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void,
+        errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> Void ) -> Void {
+            
+            let request_url = "\(self.api_url)/profiles/\(profileId)"
+            
+            manager.GET(
+                request_url,
+                parameters: nil,
+                success: { (operation: AFHTTPRequestOperation!,
+                    responseObject: AnyObject!) in
+=======
+             })
+
+            
+    }
+    
+    func getDescription(descriptionURL:NSString, successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> (),
+        errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> ()
+        ) -> () {
+        
+            manager.GET(descriptionURL, parameters: nil,
+                success: { (operation: AFHTTPRequestOperation!,
+                    responseObject: AnyObject!) in
+                    
+>>>>>>> Events & DetailVC
+                    println("JSON: " + responseObject.description)
+                    
+                    successBlock(operation: operation, responseObject: responseObject)
+                },
+                failure: { (operation: AFHTTPRequestOperation!,
+                    error: NSError!) in
+                    println("Error: " + error.localizedDescription)
+                    
+                    errorBlock(operation: operation, error: error)
+<<<<<<< HEAD
+                })
+    }
+    
+    // MARK - PATCH /profiles/:id/
+    func patchProfile(profileId:String, profileObject: AnyObject!, forUser email:String, token:String, successBlock: (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void,
+        errorBlock: (operation: AFHTTPRequestOperation!, error:NSError!) -> Void ) -> Void {
+            
+            let request_url = "\(self.api_url)/profiles/\(profileId)"
+            
+            // add token info
+            manager.requestSerializer.setValue(email, forHTTPHeaderField: "X-API-EMAIL")
+            manager.requestSerializer.setValue(token, forHTTPHeaderField: "X-API-TOKEN")
+            
+            manager.PATCH(request_url,
+                parameters: profileObject,
+                success: { (operation: AFHTTPRequestOperation!,
+                    responseObject: AnyObject!) in
+                    println("JSON: " + responseObject.description)
+                    
+                    successBlock(operation: operation, responseObject: responseObject)
+                },
+                failure: { (operation: AFHTTPRequestOperation!,
+                    error: NSError!) in
+                    println("Error: " + error.localizedDescription)
+                    
+                    errorBlock(operation: operation, error: error)
+                })
+    }
+    
+    
+    
+=======
+            })
+            
+    }
+
+>>>>>>> Events & DetailVC
+    
+}
