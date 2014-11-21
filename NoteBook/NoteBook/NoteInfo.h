@@ -10,6 +10,7 @@
 #import "PatientData.h"
 
 @interface NoteInfo : NSObject
+@property(nonatomic)BOOL hasPatientData;
 @property (nonatomic)NSInteger noteID;
 @property(nonatomic,strong) NSString *titleName;
 @property(nonatomic,strong) NSString *noteContents;
@@ -31,7 +32,10 @@
 @property(nonatomic) NSInteger has_network;
 @property(nonatomic,strong) NSString *modf_people;
 @property(strong,nonatomic) NSString *serverTime;
+-(id)initWithNoteID:(NSInteger)noteID NoteTitleName:(NSString*)titleName NoteContents:(NSString*)noteContents CreateDateString:(NSString*)createDate UpdateString:(NSString*)updateString NoteUUID:(NSString*)noteUUID CreateNotePeople:(NSString*)createNotePeople noteType:(NSString*)noteType serverTime:(NSString*)serverTime isDelete:(NSInteger)is_delete isPublic:(NSInteger)is_public modif_people:(NSString*)modefPeople has_network:(NSInteger)has_network patientInfo:(PatientData*)patientInfo;
+
 -(id)initWithNoteID:(NSInteger)noteID NoteTitleName:(NSString*)titleName NoteContents:(NSString*)noteContents CreateDateString:(NSString*)createDate UpdateString:(NSString*)updateString NoteUUID:(NSString*)noteUUID CreateNotePeople:(NSString*)createNotePeople noteType:(NSString*)noteType serverTime:(NSString*)serverTime isDelete:(NSInteger)is_delete isPublic:(NSInteger)is_public modif_people:(NSString*)modefPeople has_network:(NSInteger)has_network;
 
 -(id)initWithNoteTitleName:(NSString*)titleName NoteContents:(NSString*)noteContents CreateDateString:(NSString*)createDate UpdateString:(NSString*)updateString NoteUUID:(NSString*)noteUUID CreateNotePeople:(NSString*)createNotePeople noteType:(NSString*)noteType serverTime:(NSString*)serverTime isDelete:(NSInteger)is_delete isPublic:(NSInteger)is_public modif_people:(NSString*)modefPeople has_network:(NSInteger)has_network;
+
 @end

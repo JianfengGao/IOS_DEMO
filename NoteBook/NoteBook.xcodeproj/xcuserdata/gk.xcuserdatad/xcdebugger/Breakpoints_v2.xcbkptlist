@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "438070428.939206"
+            timestampString = "438235061.515133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "558"
-            endingLineNumber = "558"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
             landmarkName = "-getNotes"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "438070428.939206"
+            timestampString = "438235061.515133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "560"
-            endingLineNumber = "560"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "-getNotes"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "437884077.86987"
+            timestampString = "438235061.515133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-updateNewNoteInfo:success:failed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,28 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/ViewController/DisplayNoteViewController.m"
-            timestampString = "438164922.748835"
+            timestampString = "438241566.824164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1269"
-            endingLineNumber = "1269"
+            startingLineNumber = "1257"
+            endingLineNumber = "1257"
             landmarkName = "-afterDeleteNoteSelectedIndexToNextIndexAtCurrentIndex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "437987966.392319"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-init"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -202,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "438070428.939206"
+            timestampString = "438235061.515133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
             landmarkName = "-getAllNotesFromLocalByUser:success:failed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "438070428.939206"
+            timestampString = "438235061.515133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "-saveNewNote:success:failed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -249,7 +233,7 @@
                   symbolName = "-[SyncServerNotes loadServerNotes:]"
                   moduleName = "NoteBook"
                   urlString = "file:///Users/gk/Desktop/Desktop/NoteBook/NoteBook/SyncServerNotes.m"
-                  timestampString = "438167019.052841"
+                  timestampString = "438255883.164653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "153"
@@ -263,7 +247,7 @@
                   symbolName = "__35-[SyncServerNotes loadServerNotes:]_block_invoke_5"
                   moduleName = "NoteBook"
                   urlString = "file:///Users/gk/Desktop/Desktop/NoteBook/NoteBook/SyncServerNotes.m"
-                  timestampString = "438167019.053002"
+                  timestampString = "438255883.164992"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "154"
@@ -344,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/ViewController/DisplayNoteViewController.m"
-            timestampString = "438164922.748835"
+            timestampString = "438241566.824164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1402"
-            endingLineNumber = "1402"
+            startingLineNumber = "1390"
+            endingLineNumber = "1390"
             landmarkName = "-changeRectToRect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -360,11 +344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/ViewController/DisplayNoteViewController.m"
-            timestampString = "438164922.748835"
+            timestampString = "438241566.824164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1405"
-            endingLineNumber = "1405"
+            startingLineNumber = "1393"
+            endingLineNumber = "1393"
             landmarkName = "-changeRectToRect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -376,11 +360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "438144434.062167"
+            timestampString = "438235061.515133"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "742"
-            endingLineNumber = "742"
+            startingLineNumber = "803"
+            endingLineNumber = "803"
             landmarkName = "-getMaxRowNumberByNoteUser:success:failed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -391,28 +375,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NoteBook/NotebookDatabase.m"
-            timestampString = "438144928.323404"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "714"
-            endingLineNumber = "714"
-            landmarkName = "-getNotesFromLocalByUser:nBaseRow:nNumRecord:success:failed:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "NoteBook/CreatNoteViewController.m"
-            timestampString = "438164022.122884"
+            timestampString = "438254788.545193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
             landmarkName = "-convertContainsNoBlankLineArrayToString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -431,6 +399,86 @@
             endingLineNumber = "75"
             landmarkName = "@implementation DisplayNoteViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoteBook/NotebookDatabase.m"
+            timestampString = "438227874.920281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-init"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoteBook/NotebookDatabase.m"
+            timestampString = "438235061.515133"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "478"
+            endingLineNumber = "478"
+            landmarkName = "-saveNotes:success:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoteBook/NotebookDatabase.m"
+            timestampString = "438235061.515133"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
+            landmarkName = "-saveNewNote:success:failed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoteBook/NotebookDatabase.m"
+            timestampString = "438235046.681548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
+            landmarkName = "-getAllNotesFromLocalByUser:success:failed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NoteBook/NotebookDatabase.m"
+            timestampString = "438238963.876536"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "-saveNewNote:success:failed:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

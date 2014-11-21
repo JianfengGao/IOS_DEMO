@@ -15,7 +15,7 @@
 }
 @property (nonatomic) sqlite3 *noteDatabase;
 @property(strong,nonatomic) NSString *databasePath;
-
+@property(nonatomic) BOOL hasPatientData;
 +(NotebookDatabase*)initDatabase;
 
 //load data from database

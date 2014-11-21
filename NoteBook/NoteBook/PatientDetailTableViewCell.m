@@ -40,7 +40,7 @@
      
         _inputField.backgroundColor = [UIColor clearColor];
         _inputField.delegate = self;
-        _inputField.contentInset = UIEdgeInsetsMake(8, 0, 8, 0);
+        _inputField.contentInset = UIEdgeInsetsMake(8, 1, 8, 1);
         _inputField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17 ];
         //_inputField.textColor =  [UIColor blueColor];
         //_inputField.textColor = [UIColor lightTextColor];

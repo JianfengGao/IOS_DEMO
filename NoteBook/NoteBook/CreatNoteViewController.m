@@ -36,6 +36,7 @@
 @property(nonatomic)CGRect createNoteTableViewFrame;
 
 @property(nonatomic,strong)SyncServerNotes *syncServerNotes;
+@property(nonatomic)CGRect createTitleFrame;
 @end
 
 @implementation CreatNoteViewController
@@ -149,15 +150,18 @@ static NSString *user = @"test55";
     PatientData *patient1 = [[PatientData alloc]init];
     patient1.area = @"病区1";
     patient1.location = @"+1床";
-    patient1.name = @"MOUMOU";
-    patient1.gender = @"男";
+    patient1.name = @"YOUYOU";
+    patient1.gender = @"女";
     patient1.creatDate = @"2014.10.22 星期五 上午8：20";
-    patient1.age = @"55";
+    patient1.age = @"25";
+  
+    patient1.personImage = UIImagePNGRepresentation([UIImage imageNamed:@"profileImage"]);
     
     self.noteInfo.patientInfo = patient1;
     
-    self.rowCount = 10;
-    
+    //self.noteInfo.hasPatientData = YES;
+    self.rowCount = 19;
+#warning 从服务器上load patient info,load完后掉用方法[self changeShowNoteDetailTableFrame]显示信息;
     [self.view addSubview:self.createNoteView];
   
     [self showPatientData:self.noteInfo.patientInfo inView:self.createNoteView];
@@ -170,7 +174,7 @@ static NSString *user = @"test55";
 -(void)showPatientData:(PatientData*)patientData inView:(CreateNoteView*)createNoteView
 {
     if(patientData){
-        createNoteView.imageView.image = patientData.personImage;
+        createNoteView.imageView.image = [UIImage imageWithData:patientData.personImage];
         createNoteView.areaLabel.text = patientData.area;
         createNoteView.nameLabel.text = patientData.name;
         createNoteView.locationLabel.text = patientData.location;
@@ -186,6 +190,8 @@ static NSString *user = @"test55";
         _createNoteView.creatNoteTableView.dataSource = self;
         _createNoteView.creatNoteTableView.showsVerticalScrollIndicator = NO;
         _createNoteTableViewFrame = self.createNoteView.creatNoteTableView.frame;
+        _createNoteView.textField.delegate = self;
+        _createTitleFrame = _createNoteView.textField.frame;
         
         [_createNoteView.cancel addTarget:self action:@selector(cancelBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [_createNoteView.save addTarget:self action:@selector(saveBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -198,19 +204,26 @@ static NSString *user = @"test55";
 {
     
         UITableView *tableView = self.createNoteView.creatNoteTableView;
-        
+        UITextField *tempTextField = self.createNoteView.textField;
+    
         if(self.noteInfo.patientInfo == nil){
             CGRect rect = self.createNoteTableViewFrame;
-            rect.origin.y = 56;//search bar height + 2
-            rect.size.height = CGRectGetHeight(self.createNoteTableViewFrame) + 56;
+            rect.origin.y = rect.origin.y - 73;//search bar height + 2
+            rect.size.height = CGRectGetHeight(self.createNoteTableViewFrame) + 73;
             
+            CGRect tempTextFieldRect = self.createTitleFrame;
+            tempTextFieldRect.origin.y =tempTextFieldRect.origin.y - 73;
             [UIView animateWithDuration:0.25 animations:^{
                 tableView.frame = rect;
+                self.createNoteView.tempViewForPatient.alpha = 0;
+                tempTextField.frame = tempTextFieldRect;
             }];
         }else {
             
             [UIView animateWithDuration:0.25 animations:^{
                 tableView.frame = self.createNoteTableViewFrame;
+                tempTextField.frame = self.createTitleFrame;
+                self.createNoteView.tempViewForPatient.alpha = 1;
             }];
         }
 }
@@ -434,13 +447,18 @@ static NSString *user = @"test55";
     NSLog(@"noteInfo content : %@",noteInfo.noteContents);
     NSLog(@"noteInfo creatdate : %@",noteInfo.creatDateString);
     NSLog(@"noteInfo updatedate : %@",noteInfo.updateDateString);
-    NSLog(@"noteInfo titleName : %@",self.noteInfo.titleName);
+    NSLog(@"noteInfo titleName : %@",noteInfo.titleName);
     NSLog(@"noteInfo.note_type : %@",noteInfo.note_type);
     NSLog(@"noteInfo modf_people : %@",noteInfo.modf_people);
     NSLog(@"noteInfo is_delete : %ld",noteInfo.is_delete);
     NSLog(@"noteInfo is_public : %ld",noteInfo.is_public);
     NSLog(@"noteInfo has_network) : %ld",noteInfo.has_network);
     NSLog(@"noteInfo serverTime:%@",noteInfo.serverTime);
+    NSLog(@"noteInfo patientData area:%@",noteInfo.patientInfo.area);
+    NSLog(@"noteInfo patientData location:%@",noteInfo.patientInfo.location);
+    NSLog(@"noteInfo patientData name:%@",noteInfo.patientInfo.name);
+    NSLog(@"noteInfo patientData gender:%@",noteInfo.patientInfo.gender);
+    NSLog(@"noteInfo patientData age:%@",noteInfo.patientInfo.age);
     NSLog(@"noteInfo create note people:%@",noteInfo.createNotePeople);
 }
 -(NSString*)convertCurrentDateToString
@@ -551,26 +569,26 @@ static NSString *user = @"test55";
         [tableView endUpdates];
     }
 }
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    CGRect headerRect = CGRectMake(0, 0, tableView.frame.size.width, 45);
-    UITextField *tableHeader = [[UITextField alloc] initWithFrame:headerRect];
-    tableHeader.textColor = [UIColor blackColor];
-    tableHeader.backgroundColor = [UIColor whiteColor];
-    tableHeader.opaque = YES;
-    tableHeader.delegate = self;
-    tableHeader.placeholder = @"输入标题";
-    tableHeader.textAlignment = NSTextAlignmentCenter;
-    tableHeader.font = [UIFont boldSystemFontOfSize:22];
-    tableHeader.layer.borderColor = [UIColor orangeColor].CGColor;
-    tableHeader.layer.borderWidth = 1;
-    //tableHeader.text = @"术前讨论";
-    return tableHeader;
-    
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 45;
-}
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    CGRect headerRect = CGRectMake(0, 0, tableView.frame.size.width, 45);
+//    UITextField *tableHeader = [[UITextField alloc] initWithFrame:headerRect];
+//    tableHeader.textColor = [UIColor blackColor];
+//    tableHeader.backgroundColor = [UIColor whiteColor];
+//    tableHeader.opaque = YES;
+//    tableHeader.delegate = self;
+//    tableHeader.placeholder = @"输入标题";
+//    tableHeader.textAlignment = NSTextAlignmentCenter;
+//    tableHeader.font = [UIFont boldSystemFontOfSize:22];
+//    tableHeader.layer.borderColor = [UIColor orangeColor].CGColor;
+//    tableHeader.layer.borderWidth = 3;
+//    //tableHeader.text = @"术前讨论";
+//    return tableHeader;
+//    
+//}
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    return 45;
+//}
 #pragma mask - textfield delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -648,7 +666,7 @@ static NSString *user = @"test55";
 //如果self.rowCount != 10,table view 新增一行
 -(void)insertNewCell
 {
-    if(self.rowCount < 10 || self.rowCount - self.noteContent.count < 2){
+    if(self.rowCount < 19 || self.rowCount - self.noteContent.count < 2){
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.rowCount++ inSection:0];
         [self.createNoteView.creatNoteTableView beginUpdates];
         [self.createNoteView.creatNoteTableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];

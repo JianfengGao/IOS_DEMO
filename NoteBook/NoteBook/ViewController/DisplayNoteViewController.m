@@ -573,24 +573,6 @@ static NSString *user = @"test55";
 
     [self setTableViewSelectedFirstRow:showNotesTitleTable dataSources:self.notes];
     
-    //self.selectedNoteInfo.rowContent =[[NSMutableArray alloc] initWithArray:[self.selectedNoteInfo.noteContents componentsSeparatedByString:@"-"]];
-    //self.rowContent =[[NSMutableArray alloc] initWithArray:[self.selectedNoteInfo.noteContents componentsSeparatedByString:@"-"]];
-
-    //for test
-    PatientData *patient1 = [[PatientData alloc]init];
-    patient1.area = @"病区1";
-    patient1.location = @"+1床";
-    patient1.name = @"MOUMOU";
-    patient1.gender = @"男";
-    patient1.creatDate = @"2014.10.22 星期五 上午8：20";
-    patient1.age = @"55";
-  //  self.noteInfo = self.notes[1];
-    //self.noteInfo.patientInfo = patient1;
-    NSLog(@"note content : %@",self.selectedNoteInfo.noteContents);
-    NSLog(@"note creatdate : %@",self.selectedNoteInfo.updateDateString);
-    NSLog(@"note titleName : %@",self.selectedNoteInfo.titleName);
-  
-    //hide or show patientInfo
 }
 
 -(void)connectionToServer
@@ -817,14 +799,20 @@ static NSString *user = @"test55";
     NSLog(@"noteInfo is_public : %ld",noteInfo.is_public);
     NSLog(@"noteInfo has_network) : %ld",noteInfo.has_network);
     NSLog(@"noteInfo serverTime:%@",noteInfo.serverTime);
+    NSLog(@"noteInfo patientData area:%@",noteInfo.patientInfo.area);
+    NSLog(@"noteInfo patientData location:%@",noteInfo.patientInfo.location);
+    NSLog(@"noteInfo patientData name:%@",noteInfo.patientInfo.name);
+    NSLog(@"noteInfo patientData gender:%@",noteInfo.patientInfo.gender);
+    NSLog(@"noteInfo patientData age:%@",noteInfo.patientInfo.age);
+    NSLog(@"noteInfo create note people:%@",noteInfo.createNotePeople);
 }
 
 -(void)changeShowNoteDetailTableFrame
 {
     if(self.notes.count != 0){
         UITableView *tableView = self.displayNotesView.showNoteDetailTable;
-        
-        if(self.selectedNoteInfo.patientInfo == nil){
+        PatientData *tempPatientData = self.selectedNoteInfo.patientInfo;
+        if([tempPatientData.area isEqualToString:@""] && [tempPatientData.location isEqualToString:@""] &&[tempPatientData.name isEqualToString:@""] && [tempPatientData.gender isEqualToString:@""] && [tempPatientData.age isEqualToString:@""]){
             CGRect rect = self.showDetailTableFrame;
             rect.origin.y = 47;//search bar height + 2
             rect.size.height = displayViewHeight - 47;

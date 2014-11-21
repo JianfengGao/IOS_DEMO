@@ -25,6 +25,28 @@
 //    self.noteContents = [[rowContent valueForKey:@"description"] componentsJoinedByString:@"-"];
 //
 //}
+-(id)initWithNoteID:(NSInteger)noteID NoteTitleName:(NSString*)titleName NoteContents:(NSString*)noteContents CreateDateString:(NSString*)createDate UpdateString:(NSString*)updateString NoteUUID:(NSString*)noteUUID CreateNotePeople:(NSString*)createNotePeople noteType:(NSString*)noteType serverTime:(NSString*)serverTime isDelete:(NSInteger)is_delete isPublic:(NSInteger)is_public modif_people:(NSString*)modefPeople has_network:(NSInteger)has_network patientInfo:(PatientData*)patientInfo
+{
+    if(self = [super init]){
+        self.noteID = noteID;
+        self.titleName = titleName;
+        self.noteContents = noteContents;
+        self.creatDateString = createDate;
+        self.updateDateString = updateString;
+        self.noteUIID = noteUUID;
+        self.createNotePeople = createNotePeople;
+        self.note_type = noteType;
+        self.serverTime = serverTime;
+        self.is_delete = is_delete;
+        self.is_public = is_public;
+        self.modf_people = modefPeople;
+        self.has_network = has_network;
+        self.patientInfo = patientInfo;
+       
+    }
+    return self;
+
+}
 
 -(id)initWithNoteID:(NSInteger)noteID NoteTitleName:(NSString*)titleName NoteContents:(NSString*)noteContents CreateDateString:(NSString*)createDate UpdateString:(NSString*)updateString NoteUUID:(NSString*)noteUUID CreateNotePeople:(NSString*)createNotePeople noteType:(NSString*)noteType serverTime:(NSString*)serverTime isDelete:(NSInteger)is_delete isPublic:(NSInteger)is_public modif_people:(NSString*)modefPeople has_network:(NSInteger)has_network
 {

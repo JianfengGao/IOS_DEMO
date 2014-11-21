@@ -37,8 +37,8 @@
         [_inputField setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
         _inputField.backgroundColor = [UIColor clearColor];
         _inputField.delegate = self;
-        _inputField.contentInset = UIEdgeInsetsMake(8, 0, 8, 0);
-        _inputField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17 ];
+        _inputField.contentInset = UIEdgeInsetsMake(8, 1, 8, 1);
+        _inputField.font = [UIFont fontWithName:@"HelveticaNeue" size:17 ];
         //_inputField.textColor = [UIColor lightTextColor];
         _inputField.textAlignment = NSTextAlignmentLeft;
         _inputField.showsHorizontalScrollIndicator = NO;

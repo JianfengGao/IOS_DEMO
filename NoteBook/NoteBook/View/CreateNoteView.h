@@ -24,4 +24,6 @@
 @property(nonatomic,strong) UILabel *genderLabel;
 @property(nonatomic,strong) UILabel *ageLabel;
 
+@property(nonatomic,strong)UITextField *textField;
+@property(nonatomic,strong)UIView *tempViewForPatient;
 @end

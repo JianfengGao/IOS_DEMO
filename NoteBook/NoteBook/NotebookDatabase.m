@@ -30,8 +30,8 @@ static NotebookDatabase *_database;
         NSLog(@"dirPaths = %@",dirPaths);
         
         docsDir = [dirPaths objectAtIndex:0];
-        _databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingString:@"/noteListAA.sqlite3"]];
-        
+       // _databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingString:@"/noteListAA.sqlite3"]];
+        _databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingString:@"/noteListA.sqlite3"]];
         NSFileManager *filemgr = [NSFileManager defaultManager];
         //不存在数据库文件“notelist.sqlite3"，创建文件
         if([filemgr fileExistsAtPath:_databasePath] == NO){
@@ -42,8 +42,8 @@ static NotebookDatabase *_database;
             }else{
                 //创建表
                 char *errMsg;
-                const char *sql_stmt = "create table if not exists notes(id integer primary key autoincrement,titleName TEXT,contents TEXT,creatDateString TEXT,updateDateString TEXT,createPeople TEXT,noteUIID TEXT,note_type TEXT,serverTime TEXT,is_delete INTEGER,is_public INTEGER,modif_people TEXT,has_network INTEGER)";
-//                   "create table if not exists localTable(id integer primary key autoincrement,titleName TEXT,contents TEXT,creatDateString TEXT,updateDateString TEXT,createPeople TEXT,noteUIID TEXT,note_type TEXT,serverTime TEXT,is_delete INTEGER,is_public INTEGER,modif_people TEXT)";
+//                const char *sql_stmt = "create table if not exists notes(id integer primary key autoincrement,titleName TEXT,contents TEXT,creatDateString TEXT,updateDateString TEXT,createPeople TEXT,noteUIID TEXT,note_type TEXT,serverTime TEXT,is_delete INTEGER,is_public INTEGER,modif_people TEXT,has_network INTEGER)";
+const char *sql_stmt = "create table if not exists notes(id integer primary key autoincrement,titleName TEXT,contents TEXT,creatDateString TEXT,updateDateString TEXT,createPeople TEXT,noteUIID TEXT,note_type TEXT,serverTime TEXT,is_delete INTEGER,is_public INTEGER,modif_people TEXT,has_network INTEGER,profileImage BLOB,area TEXT,location TEXT,name TEXT,gender TEXT,age TEXT)";
                 if(sqlite3_exec(_noteDatabase, sql_stmt, NULL, NULL, &errMsg) != SQLITE_OK){
                     NSLog(@"创建表失败");
                 }
@@ -166,7 +166,18 @@ static NotebookDatabase *_database;
                         NSInteger is_public = sqlite3_column_int(statement, 10);
                         NSString *modefPeople = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 11) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 11)];
                         NSInteger hasNetwork = sqlite3_column_int(statement, 12);
-                        noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork];
+            
+            //patient data
+              NSData *imageData = [NSData dataWithBytes:sqlite3_column_blob(statement, 13) length:sqlite3_column_bytes(statement, 13)];
+              NSString *area = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 14) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 14)];
+              NSString *location = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 15) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 15)];
+              NSString *name = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 16) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 16)];
+              NSString *gender = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 17) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 17)];
+              NSString *age = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 18) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 18)];
+            
+               //         noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork];
+            PatientData *patientInfo = [[PatientData alloc] initWithProfileImage:imageData area:area location:location name:name gender:gender age:age];
+            noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork patientInfo:patientInfo];
            
         }
         sqlite3_finalize(statement);
@@ -201,7 +212,18 @@ static NotebookDatabase *_database;
             NSInteger is_public = sqlite3_column_int(statement, 10);
             NSString *modefPeople = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 11) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 11)];
             NSInteger hasNetwork = sqlite3_column_int(statement, 12);
-            NoteInfo *noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork];
+            
+           // NoteInfo *noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork];
+            //patient data
+            NSData *imageData = [NSData dataWithBytes:sqlite3_column_blob(statement, 13) length:sqlite3_column_bytes(statement, 13)];
+            NSString *area = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 14) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 14)];
+            NSString *location = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 15) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 15)];
+            NSString *name = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 16) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 16)];
+            NSString *gender = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 17) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 17)];
+            NSString *age = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 18) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 18)];
+
+            PatientData *patientInfo = [[PatientData alloc] initWithProfileImage:imageData area:area location:location name:name gender:gender age:age];
+            NoteInfo *noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork patientInfo:patientInfo];
             [notes addObject:noteInfo];
         }
         sqlite3_finalize(statement);
@@ -289,11 +311,19 @@ static NotebookDatabase *_database;
 {
     sqlite3_stmt *statement = NULL;
     NSLog(@"new note ,insert");
-    
-NSString *insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleName,contents,creatDateString,updateDateString,createPeople,noteUIID,note_type,serverTime,is_delete,is_public,modif_people,has_network) values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\",\"%d\",\"%@\",\"%d\")",noteInfo.titleName,noteInfo.noteContents,noteInfo.creatDateString,noteInfo.updateDateString,noteInfo.createNotePeople,noteInfo.noteUIID,noteInfo.note_type,noteInfo.serverTime,noteInfo.is_delete,noteInfo.is_public,noteInfo.modf_people,noteInfo.has_network];
+    NSString *insertSQL;
+  //  if(noteInfo.hasPatientData){
+        insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleName,contents,creatDateString,updateDateString,createPeople,noteUIID,note_type,serverTime,is_delete,is_public,modif_people,has_network,profileImage,area,location,name,gender,age) values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\",\"%d\",\"%@\",\"%d\",\"%d\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",noteInfo.titleName,noteInfo.noteContents,noteInfo.creatDateString,noteInfo.updateDateString,noteInfo.createNotePeople,noteInfo.noteUIID,noteInfo.note_type,noteInfo.serverTime,noteInfo.is_delete,noteInfo.is_public,noteInfo.modf_people,noteInfo.has_network,noteInfo.patientInfo.personImage,noteInfo.patientInfo.area,noteInfo.patientInfo.location,noteInfo.patientInfo.name,noteInfo.patientInfo.gender,noteInfo.patientInfo.age];
+//    }else {
+//        insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleName,contents,creatDateString,updateDateString,createPeople,noteUIID,note_type,serverTime,is_delete,is_public,modif_people,has_network,profileImage,area,location,name,gender,age) values (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%d\",\"%d\",\"%@\",\"%d\")",noteInfo.titleName,noteInfo.noteContents,noteInfo.creatDateString,noteInfo.updateDateString,noteInfo.createNotePeople,noteInfo.noteUIID,noteInfo.note_type,noteInfo.serverTime,noteInfo.is_delete,noteInfo.is_public,noteInfo.modf_people,noteInfo.has_network];
+//    }
 
+    
     const char *insert_stmt = [insertSQL UTF8String];
     if(sqlite3_prepare_v2(_noteDatabase, insert_stmt, -1, &statement, NULL) == SQLITE_OK){
+//        if(noteInfo.hasPatientData){
+//            sqlite3_bind_blob(statement, 0, [noteInfo.patientInfo.personImage bytes], [noteInfo.patientInfo.personImage length], SQLITE_TRANSIENT);
+//        }
         
         if(sqlite3_step(statement) == SQLITE_DONE){
             NSLog(@"成功存入数据");
@@ -305,9 +335,8 @@ NSString *insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleNa
         }
         sqlite3_finalize(statement);
     };
-    
-    
 }
+
 //得到客户端某个用户的所有的笔记
 -(NSArray*)getAllNotesFromLocalByUser:(NSString*)userName success:(void (^)(void))success failed:(void (^)(void))failed
 {
@@ -339,7 +368,18 @@ NSString *insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleNa
             NSString *modefPeople = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 11) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 11)];
             NSInteger hasNetwork = sqlite3_column_int(statement, 12);
             
-            NoteInfo *noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork];
+           // NoteInfo *noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork];
+            
+            
+            NSData *imageData = [NSData dataWithBytes:sqlite3_column_blob(statement, 13) length:sqlite3_column_bytes(statement, 13)];
+            NSString *area = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 14) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 14)];
+            NSString *location = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 15) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 15)];
+            NSString *name = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 16) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 16)];
+            NSString *gender = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 17) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 17)];
+            NSString *age = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 18) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 18)];
+            
+            PatientData *patientInfo = [[PatientData alloc] initWithProfileImage:imageData area:area location:location name:name gender:gender age:age];
+           NoteInfo *noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork patientInfo:patientInfo];
             [notes addObject:noteInfo];
         }
       
@@ -431,8 +471,8 @@ NSString *insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleNa
     
     NSLog(@"New note,insert please");
     
-    NSString *insertSQL =@"INSERT INTO notes (titleName,contents,creatDateString,updateDateString,createPeople,noteUIID,note_type,serverTime,is_delete,is_public,modif_people,has_network) values (?,?,?,?,?,?,?,?,?,?,?,?)";
-   // NSString *insertSQL = @"INSERT into notes (titleName,contents,creatDateString,updateDateString,createPeople,noteUIID,note_type,severTime,is_delete,is_public,modif_people,has_network) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+   // NSString *insertSQL =@"INSERT INTO notes (titleName,contents,creatDateString,updateDateString,createPeople,noteUIID,note_type,serverTime,is_delete,is_public,modif_people,has_network) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+    NSString *insertSQL =@"INSERT INTO notes (titleName,contents,creatDateString,updateDateString,createPeople,noteUIID,note_type,serverTime,is_delete,is_public,modif_people,has_network,profileImage,area,location,name,gender,age) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     const char *insert_stmt = [insertSQL UTF8String];
     
     sqlite3_exec(_noteDatabase, "BEGIN EXCLUSIVE TRANSACTION", 0, 0, 0);
@@ -451,6 +491,16 @@ NSString *insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleNa
             sqlite3_bind_int(statement, 10, noteInfo.is_public);
             sqlite3_bind_text(statement, 11, [noteInfo.titleName UTF8String], -1, SQLITE_TRANSIENT);
             sqlite3_bind_int(statement, 12, noteInfo.has_network);
+            
+            //patient data
+           
+                sqlite3_bind_blob(statement, 13, [noteInfo.patientInfo.personImage bytes], [noteInfo.patientInfo.personImage length], SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 14, [noteInfo.patientInfo.area UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 15, [noteInfo.patientInfo.location UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 16, [noteInfo.patientInfo.name UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 17, [noteInfo.patientInfo.gender UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(statement, 18, [noteInfo.patientInfo.age UTF8String], -1, SQLITE_TRANSIENT);
+                
             
             if(sqlite3_step(statement) != SQLITE_OK) NSLog(@"SQL Error: %s",sqlite3_errmsg(_noteDatabase));
             if (sqlite3_reset(statement) != SQLITE_OK) NSLog(@"SQL Error: %s",sqlite3_errmsg(_noteDatabase));
@@ -691,6 +741,7 @@ NSString *insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleNa
     if(sqlite3_prepare_v2(_noteDatabase, query_stmt, -1, &statement, NULL) == SQLITE_OK){
         
         while (sqlite3_step(statement) == SQLITE_ROW) {
+            NoteInfo *noteInfo;
             
             NSInteger noteID = sqlite3_column_int(statement, 0);
             NSString *titleName = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 1) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 1)];
@@ -706,8 +757,18 @@ NSString *insertSQL = [NSString stringWithFormat:@"INSERT into notes    (titleNa
             NSString *modefPeople = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 11) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 11)];
             NSInteger hasNetwork = sqlite3_column_int(statement, 12);
             
-            NoteInfo *noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork];
-            [notes addObject:noteInfo];
+            
+                NSData *imageData = [NSData dataWithBytes:sqlite3_column_blob(statement, 13) length:sqlite3_column_bytes(statement, 13)];
+                NSString *area = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 14) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 14)];
+                NSString *location = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 15) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 15)];
+                NSString *name = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 16) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 16)];
+                NSString *gender = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 17) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 17)];
+                NSString *age = [NSString stringWithUTF8String:((char*)sqlite3_column_text(statement, 18) == NULL) ? (char*)"":(char*)sqlite3_column_text(statement, 18)];
+            PatientData *patientInfo = [[PatientData alloc] initWithProfileImage:imageData area:area location:location name:name gender:gender age:age];
+                noteInfo = [[NoteInfo alloc] initWithNoteID:noteID NoteTitleName:titleName NoteContents:noteContents CreateDateString:creatDateString UpdateString:updateDateString NoteUUID:noteUIID CreateNotePeople:createNotePeople noteType:note_type serverTime:serverTime isDelete:is_delete isPublic:is_public modif_people:modefPeople has_network:hasNetwork patientInfo:patientInfo];
+           
+            
+                [notes addObject:noteInfo];
         }
         
         

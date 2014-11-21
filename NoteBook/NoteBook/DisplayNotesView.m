@@ -42,7 +42,7 @@ static CGFloat offsetForLabel = 5;
         self.layer.cornerRadius = 10;
         self.layer.masksToBounds = YES;
         //self.layer.borderColor = [UIColor colorWithRed:<#(CGFloat)#> green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#>].CGColor;
-        self.layer.borderWidth = 2;
+        self.layer.borderWidth = 3;
         self.backgroundColor = [UIColor groupTableViewBackgroundColor];
         
         //search bar
@@ -65,55 +65,64 @@ static CGFloat offsetForLabel = 5;
         _showNoteDetailTable.backgroundColor = [UIColor whiteColor];
        // _showNoteDetailTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _showNoteDetailTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [self addSubview:_showNoteDetailTable];
+        _showNoteDetailTable.alpha = 1;
+        //[self addSubview:_showNoteDetailTable];
         
         //other views
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1, 0, frameWidth - searchbarWidth - 2, searchbarHeight)];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont fontWithName:fontName size:22];
-        _titleLabel.text = @"title";
+        //_titleLabel.text = @"ti";
         _titleLabel.textColor =TitleColor;
         _titleLabel.backgroundColor = [UIColor whiteColor];
         [self addSubview:_titleLabel];
         
         _creatDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel, 20, frameWidth/2, 23)];
         _creatDateLabel.font = [UIFont fontWithName:fontName size:14];
-        _creatDateLabel.text = @"date";
+        //_creatDateLabel.text = @"date";
         _creatDateLabel.textAlignment = NSTextAlignmentJustified;
         _creatDateLabel.textColor = TitleColor;
         [self addSubview:_creatDateLabel];
 
+        
+        //
+        UIView *viewForPatientInfo = [[UIView alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 , searchbarHeight + gap3, frameWidth - searchbarWidth - 2, patientInfoHeight)];
+        viewForPatientInfo.backgroundColor = [UIColor whiteColor];
+        
+         [self addSubview:viewForPatientInfo];
+        
         _areaLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel, searchbarHeight + gap3, (frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _areaLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _areaLabel.textAlignment = NSTextAlignmentJustified;
-        _areaLabel.text = @"area";
+       // _areaLabel.text = @"area";
         [self addSubview:_areaLabel];
         
         _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel+ (frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _locationLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _locationLabel.textAlignment = NSTextAlignmentJustified;
-        _locationLabel.text = @"location";
+        //_locationLabel.text = @"location";
         [self addSubview:_locationLabel];
         
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel + 2 * (frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _nameLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _nameLabel.textAlignment = NSTextAlignmentLeft;
-        _nameLabel.text = @"name";
+       // _nameLabel.text = @"name";
         [self addSubview:_nameLabel];
         
         _genderLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel + 3 * (frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _genderLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _genderLabel.textAlignment = NSTextAlignmentCenter;
-        _genderLabel.text = @"Gender";
+        //_genderLabel.text = @"Gender";
         [self addSubview:_genderLabel];
         
         _ageLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel + 4 *(frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _ageLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _ageLabel.textAlignment = NSTextAlignmentJustified;
-        _ageLabel.text = @"age";
+       // _ageLabel.text = @"age";
         [self addSubview:_ageLabel];
        
        
+        [self addSubview:_showNoteDetailTable];
     }
     return self;
 }
