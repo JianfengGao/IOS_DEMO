@@ -205,8 +205,9 @@ static NSString *user = @"test55";
     
         UITableView *tableView = self.createNoteView.creatNoteTableView;
         UITextField *tempTextField = self.createNoteView.textField;
+        PatientData *tempPatientData = self.noteInfo.patientInfo;
     
-        if(self.noteInfo.patientInfo == nil){
+        if([tempPatientData.area isEqualToString:@""] && [tempPatientData.location isEqualToString:@""] &&[tempPatientData.name isEqualToString:@""] && [tempPatientData.gender isEqualToString:@""] && [tempPatientData.age isEqualToString:@""]){
             CGRect rect = self.createNoteTableViewFrame;
             rect.origin.y = rect.origin.y - 73;//search bar height + 2
             rect.size.height = CGRectGetHeight(self.createNoteTableViewFrame) + 73;
@@ -354,17 +355,21 @@ static NSString *user = @"test55";
 }
 -(void)saveBtnAction:(UIButton*)sender
 {
+    [self saveNewNote];
+}
+-(void)saveNewNote
+{
     NSString *dateString = [self convertCurrentDateToString];
     
     self.noteInfo.noteContents = [self convertContainsNoBlankLineArrayToString:self.noteContent];
     self.noteInfo.creatDateString = dateString;
     self.noteInfo.updateDateString = dateString;
     self.noteInfo.has_network = 1;
-   // self.noteInfo.note_type = @"default_type";
+    // self.noteInfo.note_type = @"default_type";
     self.noteInfo.is_public = 0;
     self.noteInfo.is_delete = 0;
     self.noteInfo.modf_people = user;
-   // self.noteInfo.serverTime = @"default_time";
+    // self.noteInfo.serverTime = @"default_time";
     
     NSLog(@"noteinfo: title: %@, contents:%@, creatDate:%@,updateDate:%@",self.noteInfo.titleName,self.noteInfo.noteContents,self.noteInfo.creatDateString,self.noteInfo.updateDateString);
     NSLog(@"self.noteContent : %@",self.noteContent);
@@ -375,22 +380,22 @@ static NSString *user = @"test55";
     NSLog(@"note creatdate : %@",self.noteInfo.creatDateString);
     NSLog(@"note updatedate : %@",self.noteInfo.updateDateString);
     NSLog(@"note titleName : %@",self.noteInfo.titleName);
-
-// 判断当前网络是否存在
+    
+    // 判断当前网络是否存在
     if(NetworkJudge){
         if(self.connectionServerSucess){
             [self saveDataToServer];
         }else {
             [self connectServer];
             if(self.connectionServerSucess){
-                 [self saveDataToServer];
+                [self saveDataToServer];
             }
         }
     }else {
         self.noteInfo.createNotePeople = user;
         self.noteInfo.has_network = 0;
         self.noteInfo.is_delete = 0;
-
+        
         //self.noteInfo.noteUIID = @"defaultUUID";
         [self.dataBase saveNewNote:self.noteInfo success:^{
             [self printNoteInfo:self.noteInfo];
@@ -398,8 +403,8 @@ static NSString *user = @"test55";
             
         }];
     }
-}
 
+}
 -(void)saveDataToServer
 {
     self.noteInfo.createNotePeople = _msgSocket.userStr;
@@ -641,7 +646,9 @@ static NSString *user = @"test55";
         [self.rowHeights addObject:@(size.height)];
         [self.noteContent addObject:text];
     }
-
+    
+    self.createNoteView.creatNoteTableView.contentOffset = CGPointZero;
+    
     NSLog(@"self.cellHeights %@",self.rowHeights);
     NSLog(@"self.cellTextString %@",self.noteContent);
     [self insertNewCell];
@@ -663,6 +670,7 @@ static NSString *user = @"test55";
     }
 
 }
+
 //如果self.rowCount != 10,table view 新增一行
 -(void)insertNewCell
 {

@@ -10,16 +10,19 @@
 
 @implementation DisplayNotesView
 
-static CGFloat searchbarWidth = 320;
+//static CGFloat searchbarWidth = 320;
 static CGFloat searchbarHeight  = 45;
-static NSString *fontName = @"HelveticaNeue-Bold";
+static NSString *fontName = @"HelveticaNeue";
 static CGFloat patientInfoHeight = 45;
 static CGFloat gap1 = 2;
 static CGFloat gap2 = 1;
 static CGFloat gap3 = 2;
 static CGFloat fontHeight = 17;
 static CGFloat offsetForLabel = 5;
-#define TitleColor [UIColor blueColor]
+#define TitleColor  [UIColor orangeColor]
+#define PatientInfoTextColor  [UIColor colorWithRed:145/255.0 green:52.0/255.0 blue:194/255.0 alpha:1]
+//#define ViewForPatientInfoColor [UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:250/255.0 alpha:1]
+#define TableViewBackgroundColor [UIColor colorWithRed:241.0/255.0 green:250.0/255.0 blue:250/255.0 alpha:1]
 -(instancetype)initWithFrame:(CGRect)frame
 {
     CGFloat frameWidth = frame.size.width;
@@ -34,16 +37,18 @@ static CGFloat offsetForLabel = 5;
 //         frameWidth = frame.size.width;
 //         frameHeight = frame.size.height;
 //    }
-    
+    CGFloat searchbarWidth = frameWidth * 1/3 +20;
     self = [super initWithFrame:frame];
     if(self){
         
         //set appearance
         self.layer.cornerRadius = 10;
         self.layer.masksToBounds = YES;
-        //self.layer.borderColor = [UIColor colorWithRed:<#(CGFloat)#> green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#>].CGColor;
-        self.layer.borderWidth = 3;
-        self.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        //self.layer.borderColor = [UIColor colorWithRed:255/255.0 green:250/255.0 blue:252/255.0 alpha:0.8].CGColor;
+        self.layer.borderColor = [UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:250/255.0 alpha:1].CGColor;
+        
+        self.layer.borderWidth = 2;
+        self.backgroundColor = [UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:250/255.0 alpha:1];
         
         //search bar
         _patientInfoHeight = patientInfoHeight + gap3;
@@ -54,9 +59,10 @@ static CGFloat offsetForLabel = 5;
         
         //show Title name table
         _showNoteTitlesTable = [[UITableView alloc] initWithFrame:CGRectMake(0, searchbarHeight+gap1, searchbarWidth, frameHeight - searchbarHeight - gap1) style:UITableViewStylePlain];
-        _showNoteTitlesTable.backgroundColor = [UIColor whiteColor];
+        _showNoteTitlesTable.backgroundColor = TableViewBackgroundColor;
         //_showNoteTitlesTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _showNoteTitlesTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        _showNoteDetailTable.separatorInset = UIEdgeInsetsZero;
         [self addSubview:_showNoteTitlesTable];
         
         //show note detail table
@@ -66,6 +72,7 @@ static CGFloat offsetForLabel = 5;
        // _showNoteDetailTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _showNoteDetailTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _showNoteDetailTable.alpha = 1;
+        _showNoteDetailTable.separatorInset = UIEdgeInsetsZero;
         //[self addSubview:_showNoteDetailTable];
         
         //other views
@@ -78,10 +85,10 @@ static CGFloat offsetForLabel = 5;
         [self addSubview:_titleLabel];
         
         _creatDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel, 20, frameWidth/2, 23)];
-        _creatDateLabel.font = [UIFont fontWithName:fontName size:14];
+        _creatDateLabel.font = [UIFont fontWithName:fontName size:12];
         //_creatDateLabel.text = @"date";
         _creatDateLabel.textAlignment = NSTextAlignmentJustified;
-        _creatDateLabel.textColor = TitleColor;
+        _creatDateLabel.textColor =TitleColor;
         [self addSubview:_creatDateLabel];
 
         
@@ -94,11 +101,13 @@ static CGFloat offsetForLabel = 5;
         _areaLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel, searchbarHeight + gap3, (frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _areaLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _areaLabel.textAlignment = NSTextAlignmentJustified;
+        _areaLabel.textColor = PatientInfoTextColor;
        // _areaLabel.text = @"area";
         [self addSubview:_areaLabel];
         
         _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel+ (frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _locationLabel.font = [UIFont fontWithName:fontName size:fontHeight];
+        _locationLabel.textColor = PatientInfoTextColor;
         _locationLabel.textAlignment = NSTextAlignmentJustified;
         //_locationLabel.text = @"location";
         [self addSubview:_locationLabel];
@@ -106,18 +115,21 @@ static CGFloat offsetForLabel = 5;
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel + 2 * (frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _nameLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _nameLabel.textAlignment = NSTextAlignmentLeft;
+        _nameLabel.textColor = PatientInfoTextColor;
        // _nameLabel.text = @"name";
         [self addSubview:_nameLabel];
         
         _genderLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel + 3 * (frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _genderLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _genderLabel.textAlignment = NSTextAlignmentCenter;
+        _genderLabel.textColor = PatientInfoTextColor;
         //_genderLabel.text = @"Gender";
         [self addSubview:_genderLabel];
         
         _ageLabel = [[UILabel alloc] initWithFrame:CGRectMake(searchbarWidth + gap1 + offsetForLabel + 4 *(frameWidth - searchbarWidth - 2)/7, searchbarHeight + gap3,(frameWidth - searchbarWidth - 2)/7, patientInfoHeight)];
         _ageLabel.font = [UIFont fontWithName:fontName size:fontHeight];
         _ageLabel.textAlignment = NSTextAlignmentJustified;
+        _ageLabel.textColor = PatientInfoTextColor;
        // _ageLabel.text = @"age";
         [self addSubview:_ageLabel];
        

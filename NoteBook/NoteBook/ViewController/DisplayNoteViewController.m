@@ -71,7 +71,9 @@
 @end
 
 @implementation DisplayNoteViewController
-
+#define TitleTableCellTextLabelColor [UIColor darkGrayColor]
+//#define CellBackgroundViewColor [UIColor colorWithRed:241.0/255.0 green:250.0/255.0 blue:250/255.0 alpha:1]
+#define CellBackgroundViewColor [UIColor redColor]
 static CGFloat displayViewHeight = 600;
 static NSString *user = @"test55";
 
@@ -159,8 +161,9 @@ static NSString *user = @"test55";
     _msgSocket.userStr = user;
     _msgSocket.passwordStr = @"test";
     
-    self.connectionServerSucess = YES;
-    [self syncServerNotesWhenConnectionToServerSucess:YES];
+    self.connectionServerSucess = NO;
+#warning 数据库恢复后，设为yes
+    [self syncServerNotesWhenConnectionToServerSucess:NO];
 }
 #pragma mask - 同步方法
 -(void)syncServerNotesWhenConnectionToServerSucess:(BOOL)connectionToServerSucess
@@ -720,6 +723,8 @@ static NSString *user = @"test55";
 {
     [self.database saveUpdateNoteToLocal:noteInfo success:^{
         NSLog(@"保存修改的笔记到本地数据库成功");
+        //更新完成以后tableView reload
+       // [self reloadTableView:self.displayNotesView.showNoteTitlesTable detailTableView:self.displayNotesView.showNoteDetailTable];
         [self printNoteInfo:noteInfo];
     } failed:^{
         NSLog(@"保存修改的笔记到本地数据库失败");
@@ -999,11 +1004,16 @@ static NSString *user = @"test55";
            cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
            if(cell == nil){
               cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+               
            }
-        
+           
            noteInfo = [self.notes objectAtIndex:indexPath.row];
-           cell.textLabel.textColor = [UIColor blueColor];
+           cell.textLabel.textColor = TitleTableCellTextLabelColor;
            cell.textLabel.text = noteInfo.titleName;
+           
+           //[cell setSelectedBackgroundView:[self titleTableViewCellBankgroundView]];
+           //set  cell background color
+           
         //return cell;
       }else if(tableView == self.strongSearchDisplayController.searchResultsTableView){
             cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -1012,7 +1022,7 @@ static NSString *user = @"test55";
               cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
            noteInfo = [self.filiterNotes objectAtIndex:indexPath.row];
-        
+          
           cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
            cell.textLabel.text = noteInfo.titleName;
         
@@ -1048,12 +1058,21 @@ static NSString *user = @"test55";
            reuseCell = nil;
        }
     }
+    cell.separatorInset = UIEdgeInsetsZero;
     
     UIView *bgColorView = [[UIView alloc]init];
-    bgColorView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    //bgColorView.backgroundColor = [UIColor colorWithRed:241.0/255.0 green:250.0/255.0 blue:250/255.0 alpha:1];
+    bgColorView.backgroundColor = [UIColor orangeColor];
     [cell setSelectedBackgroundView:bgColorView];
     return cell;
     
+}
+-(UIView*)titleTableViewCellBankgroundView
+{
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor redColor];
+    //bgColorView.layer.masksToBounds = YES;
+    return bgColorView;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -1096,16 +1115,20 @@ static NSString *user = @"test55";
         self.selectedNoteInfo = [self.filiterNotes objectAtIndex:indexPath.row];
         self.selectedNoteInitContents = self.selectedNoteInfo.noteContents;
         
-       // self.selectedNoteInfo.rowContent =[[NSMutableArray alloc] initWithArray:[self.selectedNoteInfo.noteContents componentsSeparatedByString:@"-"]];
-       // self.rowContent =[[NSMutableArray alloc] initWithArray:[self.selectedNoteInfo.noteContents componentsSeparatedByString:@"-"]];
+       //self.selectedNoteInfo.rowContent =[[NSMutableArray alloc] initWithArray:[self.selectedNoteInfo.noteContents componentsSeparatedByString:@"-"]];
+       //self.rowContent =[[NSMutableArray alloc] initWithArray:[self.selectedNoteInfo.noteContents componentsSeparatedByString:@"-"]];
         
         //hide or show patientInfo
         [self changeShowNoteDetailTableFrame];
       
         [self.displayNotesView.showNoteDetailTable reloadData];
         
+        //close search bar
+       // [self.strongSearchDisplayController.searchBar resignFirstResponder];
+        
     }else if(tableView == self.displayNotesView.showNoteTitlesTable){
         
+       // [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if(self.notes.count != 0 && self.selectedNoteInfo == [self.notes objectAtIndexedSubscript:indexPath.row]){
             return;
         }
@@ -1544,7 +1567,7 @@ static NSString *user = @"test55";
         
         retvString = [NSString stringWithFormat:@"%@ %@ %@",components[0],weekDay,hourString];
         NSLog(@"retvString ; %@",retvString);
-        retvString = [NSString stringWithFormat:@"%@ %@",components[0],hourString];
+       // retvString = [NSString stringWithFormat:@"%@ %@",components[0],hourString];
     }else {
         retvString = @"";
     }

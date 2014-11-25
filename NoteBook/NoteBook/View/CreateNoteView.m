@@ -11,6 +11,7 @@
 @implementation CreateNoteView
 
 #define BUTTONFONT [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+#define PatientInfoTextColor [
 static float zoomInOutWidthOffset = 30;
 
 static float gap1 = 3;
@@ -24,8 +25,9 @@ static float gap1 = 3;
        
         self.layer.cornerRadius = 10;
         
-        self.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        self.layer.borderWidth = 3;
+        self.backgroundColor = [UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:250/255.0 alpha:1];
+        self.layer.borderWidth = 2;
+        self.layer.borderColor = [UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:250/255.0 alpha:1].CGColor;
        // self.layer.borderColor = [UIColor yellowColor].CGColor;
         UIView *tempViewForButton = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frameWidth, 55)];
         tempViewForButton.backgroundColor = [UIColor whiteColor];
@@ -89,13 +91,19 @@ static float gap1 = 3;
         
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(gap1, 56+gap1, frameWidth/5 - 2 * gap1, frameWidth/5 - 2 * gap1)];
         
+        
         _areaLabel = [[UILabel alloc] initWithFrame:CGRectMake(frameWidth/5, 56 + gap1, 2 * frameWidth/5, 35-gap1)];
+        _areaLabel.textColor = [UIColor darkGrayColor];
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(frameWidth/5, 56+gap1+35-gap1, 2 * frameWidth/5, 35-gap1)];
         _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(frameWidth/5 +2 * frameWidth/5 , 56 + gap1, frameWidth/5, 35-gap1)];
         _genderLabel = [[UILabel alloc]initWithFrame:CGRectMake(frameWidth/5 +2 * frameWidth/5, 56+35, frameWidth/5, 35-gap1)];
         _ageLabel = [[UILabel alloc] initWithFrame:CGRectMake(4*frameWidth/5, 56+35, frameWidth/5, 35-gap1)];
         
-        
+        _nameLabel.textColor = [UIColor darkGrayColor];
+        _locationLabel.textColor = [UIColor darkGrayColor];
+        _genderLabel.textColor = [UIColor darkGrayColor];
+        _ageLabel.textColor = [UIColor darkGrayColor];
+
         [self addSubview:_cancel];
         [self addSubview:_zoomInOut];
         [self addSubview:_save];
@@ -137,14 +145,14 @@ static float gap1 = 3;
     
     UIBezierPath *path2 = [UIBezierPath bezierPath];
     path2.lineWidth = 2;
-    [[UIColor orangeColor] set];
+    [[UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:250/255.0 alpha:1] set];
     [path2 moveToPoint:CGPointMake(0, 58+44)];
     [path2 addLineToPoint:CGPointMake(rect.size.width, 58+44)];
     [path2 stroke];
     
     UIBezierPath *path3 = [UIBezierPath bezierPath];
     path3.lineWidth = 3;
-    [[UIColor orangeColor] set];
+    [[UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:250/255.0 alpha:1] set];
     [path3 moveToPoint:CGPointMake(0, 58+73+44)];
     [path3 addLineToPoint:CGPointMake(rect.size.width, 58+73+44)];
     [path3 stroke];

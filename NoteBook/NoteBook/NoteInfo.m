@@ -15,16 +15,32 @@
 -(NSMutableArray *)rowContent
 {
     if(!_rowContent){
-       _rowContent = [[NSMutableArray alloc] initWithArray:[self.noteContents componentsSeparatedByString:@"-"]];
+        _rowContent = [[NSMutableArray alloc] initWithArray:[self.noteContents componentsSeparatedByString:@"-"]];
+        NSString *tempString = [self convertContainsNoBlankLineArrayToString:_rowContent];
+        _rowContent = [[NSMutableArray alloc] initWithArray:[tempString componentsSeparatedByString:@"-"]];
     }
     return _rowContent;
 }
-//-(void)setRowContent:(NSMutableArray *)rowContent
-//{
-//    _rowContent = rowContent;
-//    self.noteContents = [[rowContent valueForKey:@"description"] componentsJoinedByString:@"-"];
-//
-//}
+-(NSString*)convertArrayToString:(NSArray *)array
+{
+    NSString *retvString = [[array valueForKey:@"description"] componentsJoinedByString:@"-"];
+    NSLog(@"retvString : %@",retvString);
+    return retvString;
+    
+}
+-(NSString*)convertContainsNoBlankLineArrayToString:(NSArray*)array
+{
+    NSString *tempStr;
+    NSMutableArray  *tempArray = [[NSMutableArray alloc] init];
+    for(NSString *str in array){
+        if(![str isEqualToString:@""]){
+            [tempArray addObject:str];
+        }
+    }
+    tempStr = [self convertArrayToString:tempArray];
+    return tempStr;
+}
+
 -(id)initWithNoteID:(NSInteger)noteID NoteTitleName:(NSString*)titleName NoteContents:(NSString*)noteContents CreateDateString:(NSString*)createDate UpdateString:(NSString*)updateString NoteUUID:(NSString*)noteUUID CreateNotePeople:(NSString*)createNotePeople noteType:(NSString*)noteType serverTime:(NSString*)serverTime isDelete:(NSInteger)is_delete isPublic:(NSInteger)is_public modif_people:(NSString*)modefPeople has_network:(NSInteger)has_network patientInfo:(PatientData*)patientInfo
 {
     if(self = [super init]){

@@ -9,7 +9,8 @@
 #import "PatientDetailTableViewCell.h"
 
 @implementation PatientDetailTableViewCell 
-
+//#define CellBackgroundColor [UIColor colorWithRed:241.0/255.0 green:250.0/255.0 blue:250/255.0 alpha:1]
+#define CellTextColor [UIColor darkGrayColor]
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -34,7 +35,7 @@
 -(UITextView *)inputField
 {
     if(!_inputField){
-        _inputField = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
+        _inputField = [[UITextView alloc] initWithFrame:CGRectMake(8, 5, self.contentView.frame.size.width, self.contentView.frame.size.height)];
         _inputField.autoresizesSubviews = YES;
         [_inputField setAutoresizingMask:UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight ];
      
@@ -42,13 +43,16 @@
         _inputField.delegate = self;
         _inputField.contentInset = UIEdgeInsetsMake(8, 1, 8, 1);
         _inputField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17 ];
-        //_inputField.textColor =  [UIColor blueColor];
-        //_inputField.textColor = [UIColor lightTextColor];
+        _inputField.textColor =  CellTextColor;
+        _inputField.backgroundColor = [UIColor whiteColor];
+        _inputField.textColor = [UIColor darkGrayColor];
         _inputField.textAlignment = NSTextAlignmentLeft;
         _inputField.showsHorizontalScrollIndicator = NO;
         _inputField.showsVerticalScrollIndicator = NO;
         _inputField.scrollEnabled = NO;
         _inputField.editable = YES;
+        _inputField.center = self.center;
+    
        // _inputField.text = @"";
         [self.contentView addSubview:_inputField];
        // [self.contentView sizeToFit];

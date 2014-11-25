@@ -39,7 +39,7 @@
         _inputField.delegate = self;
         _inputField.contentInset = UIEdgeInsetsMake(8, 1, 8, 1);
         _inputField.font = [UIFont fontWithName:@"HelveticaNeue" size:17 ];
-        //_inputField.textColor = [UIColor lightTextColor];
+        _inputField.textColor = [UIColor darkGrayColor];
         _inputField.textAlignment = NSTextAlignmentLeft;
         _inputField.showsHorizontalScrollIndicator = NO;
         _inputField.showsVerticalScrollIndicator = NO;
@@ -47,6 +47,7 @@
         _inputField.editable = YES;
         _inputField.text = @"  ";
         _inputField.center = self.center;
+        
         [self.contentView addSubview:_inputField];
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
     }
@@ -79,6 +80,7 @@
         
         if([textView.text isEqualToString: @""]){
             [textView resignFirstResponder];
+            
         }else {
             [textView resignFirstResponder];
             [self .delegate cell:self textView:textView];

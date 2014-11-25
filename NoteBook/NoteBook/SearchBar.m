@@ -16,19 +16,36 @@
     if(self){
         //set searchbar
         _searchBar = [[UISearchBar alloc] initWithFrame:self.frame];
-    
+        _searchBar.tintColor =[UIColor whiteColor];
         _searchBar.layer.cornerRadius = 2;
         _searchBar.layer.masksToBounds = YES;
-        _searchBar.placeholder = @"搜索";
-    
+        _searchBar.placeholder = @"搜索笔记";
         
-        [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:[UIColor blueColor]];
+        _searchBar.translucent = 0;
+        
+        [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTintColor:[UIColor orangeColor]];
         [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:@"取消"];
         
+        _searchBar.barStyle = UIBarStyleDefault;
+      
+      //  _searchBar.tintColor = [UIColor redColor];
+        for(UIView *subView in _searchBar.subviews){
+          //  if([subView isKindOfClass:NSClassFromString(@"UISearchBarBackground")]){
+               // [subView removeFromSuperview];
+                UIView *tempView = [[UIView alloc] initWithFrame:frame];
+                tempView.backgroundColor = [UIColor redColor];
+                tempView.alpha = 0.5;
+            subView.backgroundColor = [UIColor blackColor];
+               // [_searchBar insertSubview:tempView aboveSubview:subView];
+           //     break;
+          //  }
+        }
+       
         [self addSubview:_searchBar];
     }
     return self;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
