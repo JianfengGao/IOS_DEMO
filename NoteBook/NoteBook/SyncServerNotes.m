@@ -321,6 +321,7 @@ static SyncServerNotes *sharedSyncServerNotes = nil;
 {
     [self.database saveUpdateNoteToLocal:noteInfo success:^{
         NSLog(@"保存修改的笔记到本地数据库成功");
+        
         [self printNoteInfo:noteInfo];
     } failed:^{
         NSLog(@"保存修改的笔记到本地数据库失败");

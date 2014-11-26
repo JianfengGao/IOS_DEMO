@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SearchBar.h"
-@interface DisplayNotesView : UIView
+@interface DisplayNotesView : UIView 
 @property(strong,nonatomic) SearchBar *searchBar;
 @property(strong,nonatomic) UITableView *showNoteTitlesTable;
 @property(strong,nonatomic) UITableView *showNoteDetailTable;
@@ -23,4 +23,5 @@
 
 @property(nonatomic) CGFloat patientInfoHeight;
 
+@property(nonatomic,strong)UIAlertView *alertView;
 @end

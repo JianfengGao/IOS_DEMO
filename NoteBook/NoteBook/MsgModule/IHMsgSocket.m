@@ -273,6 +273,20 @@ static IHMsgSocket *ihMsgSocket;
             
             [self performSelector:@selector(connectServer) withObject:nil afterDelay:delayTime];
         }
+        else
+        {
+            if ([self.delegate respondsToSelector:@selector(connectServerDefeat:)])
+            {
+                [self.delegate connectServerDefeat:self];
+            }
+        }
+    }
+    else
+    {
+        if ([self.delegate respondsToSelector:@selector(connectServerDefeat:)])
+        {
+            [self.delegate connectServerDefeat:self];
+        }
     }
 }
 

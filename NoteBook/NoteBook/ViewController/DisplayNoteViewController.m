@@ -17,7 +17,7 @@
 #import "NoteInfo.h"
 #import "PatientDetailTableViewCell.h"
 #import "NoteInfoDetail.h"
-
+#import "TempView.h"
 
 @interface DisplayNoteViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate,PatientNoteDetailTableViewDelegate>
 @property(strong,nonatomic) DisplayNotesView *displayNotesView;
@@ -161,9 +161,9 @@ static NSString *user = @"test55";
     _msgSocket.userStr = user;
     _msgSocket.passwordStr = @"test";
     
-    self.connectionServerSucess = NO;
+    self.connectionServerSucess = YES;
 #warning 数据库恢复后，设为yes
-    [self syncServerNotesWhenConnectionToServerSucess:NO];
+    [self syncServerNotesWhenConnectionToServerSucess:YES];
 }
 #pragma mask - 同步方法
 -(void)syncServerNotesWhenConnectionToServerSucess:(BOOL)connectionToServerSucess
@@ -171,7 +171,7 @@ static NSString *user = @"test55";
     if(connectionToServerSucess){
         self.maxServerTime = [self.database getMaxServerTimeByNoteUser:user];
         if(self.maxServerTime == nil){
-            self.maxServerTime = @"";
+            self.maxServerTime = @" ";
         }
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setObject:user forKey:@"user_id"];
@@ -590,12 +590,38 @@ static NSString *user = @"test55";
 -(void)refresh:(UIRefreshControl*)refresh
 {
     // do other thing
-    if(self.connectionServerSucess){
-        [self syncServerNotesWhenConnectionToServerSucess:YES];
+    if(NetworkJudge){
+        if(self.connectionServerSucess){
+            [self syncServerNotesWhenConnectionToServerSucess:YES];
+        }else {
+            
+            [self connectionToServer];
+        }
+
     }else {
-       [self connectionToServer];
+        [refresh endRefreshing];
+        //[self showAlertView];
+        [self showTempView];
     }
 }
+-(void)showTempView
+{
+    TempView *temp = [[TempView alloc] initWithView:self.displayNotesView text:@"网络连接失败,请检查网络连接"];
+    [temp showWithAnimation:YES];
+}
+//-(void)showAlertView
+//{
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络连接失败，请检查网络" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+//    
+//    alertView.transform = CGAffineTransformTranslate(alertView.transform, 0, 100);
+//     [alertView show];
+//    [self performSelector:@selector(dismissAlert:) withObject:alertView afterDelay:2];
+//}
+//-(void)dismissAlert:(UIAlertView*)alert
+//{
+//    [alert dismissWithClickedButtonIndex:[alert cancelButtonIndex] animated:YES];
+//}
+
 -(void)reloadTableView:(UITableView*)showTitleTableView detailTableView:(UITableView*)detailTableView
 {
   __block  NSInteger flag = 0;
@@ -698,7 +724,8 @@ static NSString *user = @"test55";
 //仅仅用于在本地修改，包括离线和在线 update 
 -(void)saveToServerOrLocal:(NoteInfo*)noteInfo
 {
-    noteInfo.noteContents = [[noteInfo.rowContent valueForKey:@"description"] componentsJoinedByString:@"-"];
+    noteInfo.noteContents = [self convertContainsNoBlankLineArrayToString:noteInfo.rowContent];
+    self.selectedNoteInitContents = [self convertContainsNoBlankLineArrayToString:[self.selectedNoteInitContents componentsSeparatedByString:@"-"]];
     if([self.selectedNoteInitContents isEqualToString:noteInfo.noteContents]){
         return;
     }
@@ -719,12 +746,39 @@ static NSString *user = @"test55";
         [self saveUpdateNoteToLocal:self.selectedNoteInfo];
     }
 }
+-(NSString*)convertContainsNoBlankLineArrayToString:(NSArray*)array
+{
+    NSString *tempStr;
+    NSMutableArray  *tempArray = [[NSMutableArray alloc] init];
+    for(NSString *str in array){
+        if(![str isEqualToString:@""]){
+            [tempArray addObject:str];
+        }
+    }
+    tempStr = [self convertArrayToString:tempArray];
+    return tempStr;
+}
+-(NSString*)convertArrayToString:(NSArray *)array
+{
+    NSString *retvString = [[array valueForKey:@"description"] componentsJoinedByString:@"-"];
+    NSLog(@"retvString : %@",retvString);
+    return retvString;
+    
+}
 -(void)saveUpdateNoteToLocal:(NoteInfo*)noteInfo
 {
     [self.database saveUpdateNoteToLocal:noteInfo success:^{
         NSLog(@"保存修改的笔记到本地数据库成功");
         //更新完成以后tableView reload
        // [self reloadTableView:self.displayNotesView.showNoteTitlesTable detailTableView:self.displayNotesView.showNoteDetailTable];
+        self.notes =[[NSMutableArray alloc]initWithArray:[self.database getNotesFromLocalByUser:user nBaseRow:0 nNumRecord:13 success:^{
+           
+        } failed:^{
+            
+        }]];
+   
+        [self.displayNotesView.showNoteTitlesTable reloadData];
+
         [self printNoteInfo:noteInfo];
     } failed:^{
         NSLog(@"保存修改的笔记到本地数据库失败");
@@ -1157,9 +1211,12 @@ static NSString *user = @"test55";
     // self.selectedNoteInfo.noteContents = [[self.selectedNoteInfo.rowContent valueForKey:@"description"] componentsJoinedByString:@"-"];
   
     //save to data base
-    [self saveToServerOrLocal:self.selectedNoteInfo];
+    if(tableView == self.displayNotesView.showNoteTitlesTable){
+        [self saveToServerOrLocal:self.selectedNoteInfo];
+        
+        [self.notes setObject:self.selectedNoteInfo atIndexedSubscript:indexPath.row];
+    }
     
-    [self.notes setObject:self.selectedNoteInfo atIndexedSubscript:indexPath.row];
 
     return indexPath;
 }
@@ -1266,6 +1323,7 @@ static NSString *user = @"test55";
             
             //save to data base
             [self saveToServerOrLocal:self.selectedNoteInfo];
+            
             
             [tableView beginUpdates];
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];

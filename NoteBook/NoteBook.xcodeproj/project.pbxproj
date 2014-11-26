@@ -36,6 +36,7 @@
 		473FC9C01A08C690007693EE /* PatientDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 473FC9BE1A08C690007693EE /* PatientDetailTableViewCell.m */; };
 		475CB6941A11A2BE00AB2EF5 /* NoteInfoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 475CB6931A11A2BE00AB2EF5 /* NoteInfoDetail.m */; };
 		4791D8A71A1C31E7002E8D0E /* SyncServerNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4791D8A61A1C31E7002E8D0E /* SyncServerNotes.m */; };
+		4791D9141A25AD2D002E8D0E /* TempView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4791D9131A25AD2D002E8D0E /* TempView.m */; };
 		47B5941C1A09E88D00C02548 /* SearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B5941B1A09E88D00C02548 /* SearchBar.m */; };
 		47B5941F1A09E8B900C02548 /* DisplayNotesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B5941E1A09E8B900C02548 /* DisplayNotesView.m */; };
 		47B594211A0A331000C02548 /* PatientData.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B594201A0A331000C02548 /* PatientData.m */; };
@@ -106,6 +107,8 @@
 		475CB6931A11A2BE00AB2EF5 /* NoteInfoDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteInfoDetail.m; sourceTree = "<group>"; };
 		4791D8A51A1C31E7002E8D0E /* SyncServerNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncServerNotes.h; sourceTree = "<group>"; };
 		4791D8A61A1C31E7002E8D0E /* SyncServerNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncServerNotes.m; sourceTree = "<group>"; };
+		4791D9121A25AD2D002E8D0E /* TempView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempView.h; sourceTree = "<group>"; };
+		4791D9131A25AD2D002E8D0E /* TempView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempView.m; sourceTree = "<group>"; };
 		47B5941A1A09E88D00C02548 /* SearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBar.h; sourceTree = "<group>"; };
 		47B5941B1A09E88D00C02548 /* SearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBar.m; sourceTree = "<group>"; };
 		47B5941D1A09E8B900C02548 /* DisplayNotesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayNotesView.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 		473FC9B91A08AEF7007693EE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4791D9121A25AD2D002E8D0E /* TempView.h */,
+				4791D9131A25AD2D002E8D0E /* TempView.m */,
 				47B5941A1A09E88D00C02548 /* SearchBar.h */,
 				47B5941B1A09E88D00C02548 /* SearchBar.m */,
 				47B5941D1A09E8B900C02548 /* DisplayNotesView.h */,
@@ -404,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4791D9141A25AD2D002E8D0E /* TempView.m in Sources */,
 				475CB6941A11A2BE00AB2EF5 /* NoteInfoDetail.m in Sources */,
 				473FC9C01A08C690007693EE /* PatientDetailTableViewCell.m in Sources */,
 				47248E071A10447100F0B782 /* MessageObject.m in Sources */,

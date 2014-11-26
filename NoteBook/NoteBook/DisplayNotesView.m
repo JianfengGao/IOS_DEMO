@@ -8,6 +8,9 @@
 
 #import "DisplayNotesView.h"
 
+@interface DisplayNotesView()
+@property(nonatomic) CGRect viewFrame;
+@end
 @implementation DisplayNotesView
 
 //static CGFloat searchbarWidth = 320;
@@ -27,7 +30,7 @@ static CGFloat offsetForLabel = 5;
 {
     CGFloat frameWidth = frame.size.width;
     CGFloat frameHeight = frame.size.height;
-    
+    self.viewFrame = frame;
     //portrait or landscape ，横屏和竖屏只能支持一种
 //    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
 //    if(UIInterfaceOrientationIsLandscape(interfaceOrientation)){
@@ -68,7 +71,7 @@ static CGFloat offsetForLabel = 5;
         //show note detail table
         
         _showNoteDetailTable = [[UITableView alloc] initWithFrame:CGRectMake(searchbarWidth + gap1, searchbarHeight + patientInfoHeight + gap3+ gap2, frameWidth - searchbarWidth - 2, frameHeight - (searchbarHeight + patientInfoHeight + gap3+ gap2)) style:UITableViewStylePlain];
-        _showNoteDetailTable.backgroundColor = [UIColor whiteColor];
+        _showNoteDetailTable.backgroundColor = TableViewBackgroundColor;
        // _showNoteDetailTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _showNoteDetailTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         _showNoteDetailTable.alpha = 1;
@@ -135,9 +138,12 @@ static CGFloat offsetForLabel = 5;
        
        
         [self addSubview:_showNoteDetailTable];
+        
+        
     }
     return self;
 }
+
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

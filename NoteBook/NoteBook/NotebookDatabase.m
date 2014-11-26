@@ -732,6 +732,7 @@ const char *sql_stmt = "create table if not exists notes(id integer primary key 
     
     sqlite3_stmt *statement;
     int d = 0;
+    int flag = 0;
     // NSString *querySQL =[NSString stringWithFormat:@"SELECT * from notes order by DESC where createPeople=%@",userName];
     NSString *querySQL =[NSString stringWithFormat:@"SELECT * from notes where createPeople= '%@' and is_delete = '%d' order by updateDateString DESC limit '%ld' offset '%ld' ",userName,d,nNumRecord,indexPathRow];
     // NSString *querySQL =[NSString stringWithFormat:@"SELECT * from notes where createPeople = '%@' ",userName];
@@ -771,10 +772,14 @@ const char *sql_stmt = "create table if not exists notes(id integer primary key 
                 [notes addObject:noteInfo];
         }
         
-        
+        flag = 1;
         NSLog(@"成功load数据");
-        success();
+       
         sqlite3_finalize(statement);
+    }
+    
+    if(flag == 1){
+        success();
     }
     return notes;
     
@@ -822,6 +827,7 @@ const char *sql_stmt = "create table if not exists notes(id integer primary key 
         }
         sqlite3_finalize(statement);
     }
+  
     return maxServerTime;
 }
 
