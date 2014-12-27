@@ -134,7 +134,7 @@ extension EventsDetailViewController: UITableViewDelegate, UITableViewDataSource
             if let event = self.event as Event! {
                 
                 var coverImageView: UIImageView! = cell.viewWithTag(1001) as UIImageView
-                coverImageView.sd_setImageWithURL(NSURL.URLWithString(self.event.photoUrl), placeholderImage: nil)
+                coverImageView.sd_setImageWithURL(NSURL(fileURLWithPath: self.event.photoUrl), placeholderImage: nil)
                 
                 var eventLabel: UILabel! = cell.viewWithTag(1002) as UILabel
                 eventLabel.text = event.name
@@ -165,7 +165,7 @@ extension EventsDetailViewController: UITableViewDelegate, UITableViewDataSource
                 var eventThumb: UIImageView! = cell.viewWithTag(1002) as UIImageView
                 eventThumb.layer.cornerRadius = eventThumb.frame.size.width / 2;
                 eventThumb.layer.masksToBounds = true;
-                eventThumb.sd_setImageWithURL(NSURL.URLWithString(self.event.photoUrl), placeholderImage: nil)
+                eventThumb.sd_setImageWithURL(NSURL(fileURLWithPath: self.event.photoUrl), placeholderImage: nil)
                 
             }
         } else if (cellIdentifier == "eventDesc") {

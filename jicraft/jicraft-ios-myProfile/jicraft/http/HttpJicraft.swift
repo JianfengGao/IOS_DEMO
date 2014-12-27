@@ -20,10 +20,10 @@ class HttpJicraft:NSObject {
         api_url = "http://218.244.147.5"
         
         // JSON settings
-        manager.requestSerializer = AFJSONRequestSerializer()
-        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
-        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        manager.responseSerializer = AFJSONResponseSerializer()
+//        manager.requestSerializer = AFJSONRequestSerializer()
+//        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+//        manager.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        manager.responseSerializer = AFJSONResponseSerializer()
     }
     
     // MARK: POST /users/sign_in/

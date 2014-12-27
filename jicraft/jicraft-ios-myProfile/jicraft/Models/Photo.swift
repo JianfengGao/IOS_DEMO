@@ -70,7 +70,7 @@ class Photo:NSObject {
             let assetRep : ALAssetRepresentation = asset.defaultRepresentation()
             let imgRef : CGImageRef = assetRep.fullScreenImage().takeUnretainedValue()
             
-            let img : UIImage = UIImage(CGImage: imgRef)
+            let img : UIImage = UIImage(CGImage: imgRef)!
             a.append(img)
         }
         return a

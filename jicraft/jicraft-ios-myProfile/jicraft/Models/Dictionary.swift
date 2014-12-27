@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension Dictionary {
+extension Dictionary {
 
     /**
     Constructs a dictionary containing every [key: value] pair from self
@@ -17,7 +17,7 @@ public extension Dictionary {
     :param: testFunction Function called to test each key, value
     :returns: Filtered dictionary
     */
-    func filter (testFunction test: (Key, Value) -> Bool) -> Dictionary {
+  func filter (testFunction test: (Key, Value) -> Bool) -> Dictionary {
         
         var result = Dictionary()
         

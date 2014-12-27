@@ -95,7 +95,7 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
             let thisAsset: ALAsset = self.assets[indexPath.row] as ALAsset
             let imageRef: CGImageRef = thisAsset.aspectRatioThumbnail().takeUnretainedValue()
             
-            let img: UIImage =  UIImage(CGImage: imageRef)
+            let img: UIImage =  UIImage(CGImage: imageRef)!
             
             var imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.size.height))
             imageView.image = img

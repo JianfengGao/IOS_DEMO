@@ -113,7 +113,7 @@ extension EventsViewController: UITableViewDataSource{
 
         var cell:EventsTableViewCell = tableView.dequeueReusableCellWithIdentifier("EventsTableViewCell", forIndexPath: indexPath) as EventsTableViewCell
         let thisEvent = self.eventsArray[indexPath.row]
-        cell.viewImage.sd_setImageWithURL(NSURL.URLWithString(thisEvent.photoUrl), placeholderImage:nil)
+        cell.viewImage.sd_setImageWithURL(NSURL(fileURLWithPath: thisEvent.photoUrl), placeholderImage:nil)
         cell.startDateLabel.text  = thisEvent.abbrDate
         cell.origanizer.text = thisEvent.organizer
         cell.locationLabel.text = thisEvent.abbrLocation

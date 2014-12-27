@@ -36,7 +36,7 @@ class ProfileViewController: UICollectionViewController {
         self.refresh.tintColor = UIColor.redColor()
         self.refresh.attributedTitle = NSAttributedString(string: "刷新中...", attributes: [NSForegroundColorAttributeName : UIColor.redColor()])
         self.refresh.addTarget(self, action: "fetchProfile:", forControlEvents: UIControlEvents.ValueChanged)
-        self.collectionView?.addSubview(self.refresh)
+        self.collectionView.addSubview(self.refresh)
         
         // setup login and edit buttons
         self.configBarButtons()
@@ -59,7 +59,7 @@ class ProfileViewController: UICollectionViewController {
     func beginRefreshingCollectionView() {
         self.refresh.beginRefreshing()
         
-        if let cv = self.collectionView {
+         let cv = self.collectionView
             if (cv.contentOffset.y == 0) {
                 UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.BeginFromCurrentState,
                     animations: {() -> Void in
@@ -70,7 +70,7 @@ class ProfileViewController: UICollectionViewController {
                         self.fetchPhotos()
                 })
             }
-        }
+        
         
     }
     
@@ -91,7 +91,7 @@ class ProfileViewController: UICollectionViewController {
                 self.profileDetails = _details
                 
                 self.configBarButtons()
-                self.collectionView?.reloadData()
+                self.collectionView.reloadData()
                 self.refresh.endRefreshing()
                 
                 println("[ProfileVC fetchProfile] profile: \(self.profile)")
@@ -101,7 +101,7 @@ class ProfileViewController: UICollectionViewController {
                 println("[ProfileViewController fetchProfile] failed, isLoggedIn? \(LoginManager.defaultManager.isLoggedIn)")
                 
                 self.configBarButtons()
-                self.collectionView?.reloadData()
+                self.collectionView.reloadData()
                 self.refresh.endRefreshing()
         })
     }
@@ -137,7 +137,7 @@ class ProfileViewController: UICollectionViewController {
         LoginManager.defaultManager.fetchPhotos(onSuccess: {(imageUrls: [String]) -> Void in
             
             self.photos = imageUrls
-            self.collectionView?.reloadData()
+            self.collectionView.reloadData()
             
             self.refresh.endRefreshing()
         }, onFailure:{(error: NSError) -> Void in
@@ -185,7 +185,7 @@ class ProfileViewController: UICollectionViewController {
         self.configBarButtons()
         self.profile = Profile()
         self.photos = []
-        self.collectionView?.reloadData()
+        self.collectionView.reloadData()
         
     }
 
@@ -283,7 +283,7 @@ override
         var cell: UICollectionViewCell! = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as UICollectionViewCell
         
         var logoImageView = cell.viewWithTag(1001) as UIImageView
-        logoImageView.sd_setImageWithURL(NSURL.URLWithString(self.profile.logoUrl), placeholderImage:UIImage(named: "empty-profile"))
+        logoImageView.sd_setImageWithURL(NSURL(fileURLWithPath: self.profile.logoUrl), placeholderImage:UIImage(named: "empty-profile"))
         
         var nameLabel = cell.viewWithTag(1002) as UILabel
         nameLabel.text = self.profile.name
@@ -315,7 +315,7 @@ override
         
         let photoURL = self.photos[indexPath.row]
         var photoImageView = cell.viewWithTag(1001) as UIImageView
-        photoImageView.sd_setImageWithURL(NSURL.URLWithString(photoURL), placeholderImage: nil)
+        photoImageView.sd_setImageWithURL(NSURL(fileURLWithPath: photoURL), placeholderImage: nil)
         
         return cell
     }

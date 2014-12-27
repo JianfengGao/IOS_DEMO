@@ -15,7 +15,7 @@ enum JicraftButton {
     func backgroundImages() -> (normal: UIImage, disabled: UIImage) {
         if let bgImgNames : (normal: String, disabled: String) = JicraftButton.BackgroundImageNames[self] {
             
-            return (UIImage(named: bgImgNames.normal), UIImage(named: bgImgNames.disabled))
+            return (UIImage(named: bgImgNames.normal)!, UIImage(named: bgImgNames.disabled)!)
         } else {
             return (UIImage(), UIImage())
         }

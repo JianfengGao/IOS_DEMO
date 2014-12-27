@@ -112,7 +112,7 @@ extension TaskListsViewController: UITableViewDelegate, UITableViewDataSource {
                 var imageView: UIImageView! = cell.viewWithTag(1001) as UIImageView
                 imageView.layer.cornerRadius = imageView.frame.size.width / 2;
                 imageView.layer.masksToBounds = true;
-                imageView.sd_setImageWithURL(NSURL.URLWithString(taskList.event.photoUrl), placeholderImage: nil)
+                imageView.sd_setImageWithURL(NSURL(fileURLWithPath: taskList.event.photoUrl), placeholderImage: nil)
             }
             
             var titleLabel: UILabel! = cell.viewWithTag(1002) as UILabel
@@ -142,7 +142,7 @@ extension TaskListsViewController: UITableViewDelegate, UITableViewDataSource {
                 var imageView: UIImageView! = cell.viewWithTag(1001) as UIImageView
                 imageView.layer.cornerRadius = imageView.frame.size.width / 2;
                 imageView.layer.masksToBounds = true;
-                imageView.sd_setImageWithURL(NSURL.URLWithString(event.photoUrl), placeholderImage: nil)
+                imageView.sd_setImageWithURL(NSURL(fileURLWithPath: event.photoUrl), placeholderImage: nil)
             }
             
             var nameLabel: UILabel! = cell.viewWithTag(1002) as UILabel

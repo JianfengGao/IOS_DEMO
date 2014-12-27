@@ -65,7 +65,7 @@ class EditProfileViewController: UITableViewController {
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
     func setUIData() {
-        self.logoImageView.sd_setImageWithURL(NSURL.URLWithString(self.profile.logoUrl), placeholderImage:UIImage(named: "empty-profile"))
+        self.logoImageView.sd_setImageWithURL(NSURL(fileURLWithPath: self.profile.logoUrl), placeholderImage:UIImage(named: "empty-profile"))
         self.about.text = self.profile.about
         self.name.text = self.profile.name
         self.tel.text = self.profile.tel
